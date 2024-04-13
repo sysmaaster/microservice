@@ -75,7 +75,7 @@ class WalletController {
       let foundWallet;
       foundWallet = await walletService.deleteWallet(req.params[0]);
       if (foundWallet) {
-        res.status(HTTP_Status.OK_200).json({});
+        res.sendStatus(HTTP_Status.OK_200);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
       log.error(e, "delete - WalletController");

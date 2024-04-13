@@ -5,7 +5,7 @@ import { CategoriesEditRequestModel } from "../models/categoriesEditRequest.mode
 
 class CategoriesRepositry {
 
-  async GetAll() {
+  async getAll() {
     const metricsLabels = {
       operation: "ShowAll Categories",
     };
@@ -20,7 +20,7 @@ class CategoriesRepositry {
     }
   }
 
-  async GetById(input: string) {
+  async getById(input: string) {
     const metricsLabels = {
       operation: "GetCategoriesById",
     };
@@ -61,7 +61,7 @@ class CategoriesRepositry {
       const udp_data = {
         C_NAME: upd.C_NAME,
       };
-      const result = await categories.findOneAndUpdate({ id: upd.id }, udp_data, {
+      const result = await categories.findOneAndUpdate({ _id: upd.id }, udp_data, {
         new: true,
       });
       timer({ ...metricsLabels, success: "true" });

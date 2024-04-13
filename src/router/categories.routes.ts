@@ -73,7 +73,7 @@ const CategoriesRouter = () => {
     "/",
     InputBodyNewCategoryValidation,
     InputValidationMiddleware,
-    CategoryController.getAll
+    CategoryController.create
   );
 
   /**editCategory
@@ -113,7 +113,7 @@ const CategoriesRouter = () => {
     "/",
     InputBodyEditCategoryValidation,
     InputValidationMiddleware,
-    CategoryController.getAll
+    CategoryController.update
   );
 
   /**deleteCategory
@@ -149,9 +149,9 @@ const CategoriesRouter = () => {
    *          example: aaa
    *
    */
-  router.delete(/^\/(?:([^\/]+?))\/?$/i, CategoryController.getAll);
+  router.delete(/^\/(?:([^\/]+?))\/?$/i, CategoryController.delet);
 
   return router;
 };
-/**/ 
+
 export default CategoriesRouter;
