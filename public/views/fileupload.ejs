@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+</head>
+<body>
+
+<div class="container col-sm-12" id="choose-files" oncopy="return false" oncut="return false" onpaste="return false">
+  <div class="row">
+
+    <form action="/upload/upl" method="post" enctype="multipart/form-data">
+           <b>Cashback:</b> <input type="file" name="file" id="cashbackfiles"
+           multiple/>
+           <input class="btn btn-primary" type="submit" style="border-radius: 4px;" name="cashbackfiles" value="Upload">
+       </form>
+
+  </div>
+</div>
+
+</body>
+</html>
