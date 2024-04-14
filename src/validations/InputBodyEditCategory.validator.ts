@@ -9,7 +9,7 @@ export const InputBodyEditCategoryValidation = checkSchema({
     },
     isString: { errorMessage: "id, should be is String" },
   },
-  C_NAME: {
+  name: {
     exists: {
       errorMessage: "Name required",
       options: { checkFalsy: true },

@@ -26,7 +26,7 @@ class DevsController {
     try {
       res
         .status(HTTP_Status.OK_200)
-        .send(" EMILL DEV-v5 Цей сервіс DEV-5 (API) створено 27.08.2023");
+        .send(" EMILL v6 Цей сервіс DEV-6 (API) створено 27.08.2023 в розробці до 30.10.2023 продовжено 01.01.2024 Сервіс Категорій Допрацьвано 14.04.2024");
     } catch (e) {
       new ErrorException(500, "test", "its BAAD");
     }

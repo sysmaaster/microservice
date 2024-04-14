@@ -2,7 +2,7 @@ import { checkSchema } from "express-validator";
 
 export const InputBodyNewCategoryValidation = checkSchema({
   
-  C_NAME: {
+  name: {
     exists: {
       errorMessage: "Name required",
       options: { checkFalsy: true },

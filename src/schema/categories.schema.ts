@@ -2,7 +2,9 @@ import mongoose from "mongoose";
 
 const CategoriesSchema = new mongoose.Schema(
   {
-    C_NAME: { type: String, required: true },
+    id: { type: String, required: true, index: true, unique: true },
+    name: { type: String, required: true, unique: true },
+    created:{ type: String, default: Date.now}
   },
   {
     collection: "categories",

@@ -7,11 +7,11 @@ import { ObjectId } from "mongodb";
  *      type: object
  *      required:
  *        - id
- *        - C_NAME
+ *        - name
  *      properties:
  *        id:
  *          type: string
- *        C_NAME:
+ *        name:
  *          type: string
  *          example: testWallet
  *          minLength: 3
@@ -20,5 +20,5 @@ import { ObjectId } from "mongodb";
  */
 export type CategoriesEditRequestModel = {
   id: string;
-  C_NAME: string;
+  name: string;
 };

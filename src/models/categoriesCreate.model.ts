@@ -6,9 +6,9 @@ import { ObjectId } from "mongodb";
  *    CategoriesCreateModel:
  *      type: object
  *      required:
- *        - C_NAME
+ *        - name
  *      properties:
- *        C_NAME:
+ *        name:
  *          type: string
  *          example: testWallet
  *          minLength: 3
@@ -17,6 +17,6 @@ import { ObjectId } from "mongodb";
  */
 
 export type CategoriesCreateModel = {
-  C_NAME: string;
+  name: string;
  // HOVER: boolean;
 };
