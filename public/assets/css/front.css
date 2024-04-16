@@ -10,3 +10,6 @@ body {
 h4 {
   padding: 20px;
 }
+[v-cloak] {
+  display: none;
+}
