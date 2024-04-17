@@ -23,7 +23,7 @@ const WalletRouter = () => {
    *          description: Ідентифікатор Рахунку
    *          schema:
    *            type: string
-   *          example: aaa
+   *          example: 53b1c579bdf3de74f76bdac9
    *      responses:
    *        "200":
    *          description: Успіх
@@ -183,7 +183,7 @@ const WalletRouter = () => {
    *          description: Ідентифікатор Рахунку
    *          schema:
    *            type: string
-   *          example: aaa
+   *          example: 53b1c579bdf3de74f76bdac9
    *
    */
   router.delete(/^\/(?:([^\/]+?))\/?$/i, WalletController.deleteWallet);

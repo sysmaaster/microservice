@@ -17,6 +17,7 @@
  *      properties:
  *        id:
  *          type: string
+ *          example: 53b1c579bdf3de74f76bdac9
  *        W_NAME:
  *          type: string
  *          example: testWallet

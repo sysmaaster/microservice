@@ -20,8 +20,7 @@ class CategoriesRepositry {
       return filter;
     } catch (e) {
       timer({ ...metricsLabels, success: "false" });
-      log.error(e, "getAll - CategoriesRepositry");
-      return false;
+      throw e;
     }
   }
 
@@ -42,8 +41,7 @@ class CategoriesRepositry {
       }
     } catch (e) {
       timer({ ...metricsLabels, success: "false" });
-      log.error(e, "getById - CategoriesRepositry");
-      return false;
+      throw e;
     }
   }
 
@@ -64,8 +62,7 @@ class CategoriesRepositry {
       return filter;
     } catch (e) {
       timer({ ...metricsLabels, success: "false" });
-      log.error(e, "Create - CategoriesRepositry");
-      return false;
+      throw e;
     }
   }
 
@@ -91,8 +88,7 @@ class CategoriesRepositry {
       return filter;
     } catch (e) {
       timer({ ...metricsLabels, success: "false" });
-      log.error(e, "Update - CategoriesRepositry");
-      return false;
+      throw e;
     }
   }
 
@@ -107,8 +103,7 @@ class CategoriesRepositry {
       return result;
     } catch (e) {
       timer({ ...metricsLabels, success: "false" });
-      log.error(e, "Delete - CategoriesRepositry");
-      return false;
+      throw e;
     }
   }
 }

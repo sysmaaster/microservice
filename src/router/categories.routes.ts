@@ -146,7 +146,7 @@ const CategoriesRouter = () => {
    *          description: Ідентифікатор Рахунку
    *          schema:
    *            type: string
-   *          example: aaa
+   *          example: 53b1c579bdf3de74f76bdac9
    *
    */
   router.delete(/^\/(?:([^\/]+?))\/?$/i, CategoryController.delet);

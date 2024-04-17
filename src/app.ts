@@ -45,8 +45,8 @@ app.use(
 app.get("/healthcheck", (req, res) => res.sendStatus(200));
 app.get("/", (req, res) => {
   res.render("index", {
-    title: "EMILL DEV-v5",
-    text: " EMILL Працює - ОК",
+    title: "EMILL v6",
+    text: " Працює - ОК",
   });
 });
 //app.use(BasicAuthMiddleware); //-- Auth

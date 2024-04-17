@@ -11,6 +11,7 @@ import { ObjectId } from "mongodb";
  *      properties:
  *        id:
  *          type: string
+ *          example: 53b1c579bdf3de74f76bdac9
  *        name:
  *          type: string
  *          example: testWallet

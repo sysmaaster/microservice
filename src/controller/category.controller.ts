@@ -15,14 +15,16 @@ class CategoriesController {
     res: Response<CategoriesResponseModel | {}>,
     next: NextFunction
   ) {
-    let founds;
-    founds = await categoriesService.getAll().catch((err) => {
-      log.error(err, "getAll - CategoryController");
-      next(new ErrorException(500, err.name, err.message));
-    });
-    if (founds) {
-      res.status(HTTP_Status.OK_200).json(founds);
-    } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    try {
+      let founds;
+      founds = await categoriesService.getAll();
+      if (founds) {
+        res.status(HTTP_Status.OK_200).json(founds);
+      } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    } catch (e) {
+      log.error(e, "getAll - CategoriesController");
+      res.sendStatus(HTTP_Status.Server_Error_500);
+    }
   }
 
   async getFromId(
@@ -30,44 +32,52 @@ class CategoriesController {
     res: Response<CategoriesResponseModel | {}>,
     next: NextFunction
   ) {
-    let found;
-    if (!req.params) {
-      res.sendStatus(HTTP_Status.BAD_REQUEST_400);
-      return;
+    try {
+      let found;
+      if (!req.params) {
+        res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+        return;
+      }
+      found = await categoriesService.getById(req.params[0]);
+      if (found) {
+        res.status(HTTP_Status.OK_200).json(found);
+      } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    } catch (e) {
+      log.error(e, "getFromId - CategoriesController");
+      res.sendStatus(HTTP_Status.Server_Error_500);
     }
-    found = await categoriesService.getById(req.params[0]).catch((err) => {
-      log.error(err, "getById - CategoryController");
-      next(new ErrorException(500, err.name, err.message));
-    });
-    if (found) {
-      res.status(HTTP_Status.OK_200).json(found);
-    } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
   }
   async create(
     req: RequestWithBody<CategoriesCreateModel>,
     res: Response<CategoriesResponseModel | {}>,
     next: NextFunction
   ) {
-    const Wallet = await categoriesService.create(req.body).catch((err) => {
-      new WalletException( err.name) ;
-      log.error(err, "create - CategoryController");
-    });
-    if (Wallet) {
-      res.status(HTTP_Status.CREATED_201).json(Wallet);
-    } else{ res.sendStatus(HTTP_Status.BAD_REQUEST_400)};
+    try {
+      const Wallet = await categoriesService.create(req.body);
+      if (Wallet) {
+        res.status(HTTP_Status.CREATED_201).json(Wallet);
+      } else {
+        res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+      }
+    } catch (e) {
+      log.error(e, "create - CategoriesController");
+      res.sendStatus(HTTP_Status.Server_Error_500);
+    }
   }
   async update(
     req: RequestWithBody<CategoriesEditRequestModel>,
     res: Response<CategoriesResponseModel | {}>,
     next: NextFunction
   ) {
-    const upd = await categoriesService.update(req.body).catch((err) => {
-      log.error(err, "update - CategoryController");
-      next(new ErrorException(500, err.name, err.message));
-    });
-    if (upd) {
-      res.status(HTTP_Status.CREATED_201).json(upd);
-    } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    try {
+      const upd = await categoriesService.update(req.body);
+      if (upd) {
+        res.status(HTTP_Status.CREATED_201).json(upd);
+      } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    } catch (e) {
+      log.error(e, "update - CategoriesController");
+      res.sendStatus(HTTP_Status.Server_Error_500);
+    }
   }
 
   async delet(
@@ -75,14 +85,16 @@ class CategoriesController {
     res: Response<{}>,
     next: NextFunction
   ) {
-    let foundcatg;
-    foundcatg = await categoriesService.delete(req.params[0]).catch((err) => {
-      log.error(err, "delete - CategoryController");
-      next(new ErrorException(500, err.name, err.message));
-    });
-    if (foundcatg) {
-      res.sendStatus(HTTP_Status.OK_200);
-    } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    try {
+      let foundcatg;
+      foundcatg = await categoriesService.delete(req.params[0]);
+      if (foundcatg) {
+        res.sendStatus(HTTP_Status.OK_200);
+      } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    } catch (e) {
+      log.error(e, "delet - CategoriesController");
+      res.sendStatus(HTTP_Status.Server_Error_500);
+    }
   }
 }
 

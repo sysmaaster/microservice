@@ -10,7 +10,7 @@ import { ObjectId } from "mongodb";
  *      properties:
  *        name:
  *          type: string
- *          example: testWallet
+ *          example: testCategories
  *          minLength: 3
  *          maxLength: 30
  *        

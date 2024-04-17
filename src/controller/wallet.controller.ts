@@ -13,13 +13,16 @@ class WalletController {
     res: Response<WalletResponseModel | {}>,
     next: NextFunction
   ) {
-    let foundWallets;
-    foundWallets = await walletService.getAllWallets().catch((err) => {
-      next(new ErrorException(500, err.name, err.message));
-    });
+    try {
+      let foundWallets;
+    foundWallets = await walletService.getAllWallets()
     if (foundWallets) {
       res.status(HTTP_Status.OK_200).json(foundWallets);
     } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+  } catch (e) {
+    log.error(e, "getAllWallets - WalletController");
+    res.sendStatus(HTTP_Status.Server_Error_500);
+  }
   }
 
   async getWalletFromId(
@@ -27,6 +30,7 @@ class WalletController {
     res: Response<WalletResponseModel | {}>,
     next: NextFunction
   ) {
+    try {
     let foundWallet;
     if (!req.params) {
       res.sendStatus(HTTP_Status.BAD_REQUEST_400);
@@ -34,12 +38,13 @@ class WalletController {
     }
     foundWallet = await walletService
       .getWalletFromId(req.params[0])
-      .catch((err) => {
-        next(new ErrorException(500, err.name, err.message));
-      });
     if (foundWallet) {
       res.status(HTTP_Status.OK_200).json(foundWallet);
     } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+  } catch (e) {
+    log.error(e, "getWalletFromId - WalletController");
+    res.sendStatus(HTTP_Status.Server_Error_500);
+  }
   }
 
   async createWallet(
@@ -47,12 +52,15 @@ class WalletController {
     res: Response<WalletResponseModel | {}>,
     next: NextFunction
   ) {
-    const Wallet = await walletService.createWallet(req.body).catch((err) => {
-      next(new ErrorException(500, err.name, err.message));
-    });
+    try {
+    const Wallet = await walletService.createWallet(req.body)
     if (Wallet) {
       res.status(HTTP_Status.CREATED_201).json(Wallet);
     } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+  } catch (e) {
+    log.error(e, "createWallet - WalletController");
+    res.sendStatus(HTTP_Status.Server_Error_500);
+  }
   }
 
   async updateWallet(
@@ -65,7 +73,7 @@ class WalletController {
         res.status(HTTP_Status.CREATED_201).json(Wallet);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "  - WalletController");
+      log.error(e, "updateWallet  - WalletController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
