@@ -2,18 +2,18 @@ import express from "express";
 import { query } from "express-validator";
 import DevsController from "../controller/devs.controller";
 import { InputValidationMiddleware } from "../middleware/inputValidation.middleware";
- 
+
 /**healthcheck
-   * @openapi
-   * /healthcheck:
-   *  get:
-   *     tags:
-   *     - Healthcheck
-   *     description: Responds if the app is up and running
-   *     responses:
-   *       200:
-   *         description: App is up and running
-   */
+ * @openapi
+ * /healthcheck:
+ *  get:
+ *     tags:
+ *     - Healthcheck
+ *     description: Responds if the app is up and running
+ *     responses:
+ *       200:
+ *         description: App is up and running
+ */
 const DevsRouter = () => {
   const router = express.Router();
   /**help

@@ -4,7 +4,7 @@
  *  schemas:
  *   CategoriesResponseModel:
  *    type: object
- *    required: 
+ *    required:
  *     - id
  *     - name
  *    properties:
@@ -16,10 +16,10 @@
  *          example: testWallet
  *          minLength: 3
  *          maxLength: 30
- * 
+ *
  */
 
 export type CategoriesResponseModel = {
-    id: string;
-    name: string;
-  };
+  id: string;
+  name: string;
+};

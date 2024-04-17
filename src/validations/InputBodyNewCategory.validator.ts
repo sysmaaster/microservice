@@ -1,7 +1,6 @@
 import { checkSchema } from "express-validator";
 
 export const InputBodyNewCategoryValidation = checkSchema({
-  
   name: {
     exists: {
       errorMessage: "Name required",

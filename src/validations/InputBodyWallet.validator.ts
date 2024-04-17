@@ -29,7 +29,7 @@ export const InputBodyWalletValidation = checkSchema({
     },
     isFloat: {
       /*options: { min: 0 },*/
-      errorMessage: "bal, must be isFloat" ,//and >0.01
+      errorMessage: "bal, must be isFloat", //and >0.01
     },
   },
   LIMIT: {
@@ -38,14 +38,14 @@ export const InputBodyWalletValidation = checkSchema({
     },
     isFloat: {
       /*options: { min: 0 },*/
-      errorMessage: "bal, must be isFloat" ,//and >0.01
+      errorMessage: "bal, must be isFloat", //and >0.01
     },
   },
   CCY: {
     exists: { errorMessage: "currency required" },
     isString: { errorMessage: "currency, should be is String" },
     isIn: {
-      options: [['UAH', 'USD', 'EUR' ]],
+      options: [["UAH", "USD", "EUR"]],
       errorMessage: "currency not is UAH or USD",
     },
   },

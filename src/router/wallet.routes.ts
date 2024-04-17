@@ -6,7 +6,7 @@ import { InputBodyWalletValidation } from "../validations/InputBodyWallet.valida
 const WalletRouter = () => {
   const router = express.Router();
 
-/**
+  /**
    * @openapi
    *   /wallet/{id}:
    *    get:
@@ -43,8 +43,7 @@ const WalletRouter = () => {
    */
   router.get(/^\/(?:([^\/]+?))\/?$/i, WalletController.getWalletFromId);
 
-
-/**getAllWalets
+  /**getAllWalets
    * @openapi
    *  '/wallet':
    *   get:
@@ -73,7 +72,7 @@ const WalletRouter = () => {
    */
   router.get("/", WalletController.getAllWallets);
 
-/**
+  /**
    * @openapi
    *  /wallet:
    *    post:
@@ -113,7 +112,7 @@ const WalletRouter = () => {
     WalletController.createWallet
   );
 
-/**
+  /**
    * @openapi
    *  /wallet:
    *    put:
@@ -153,7 +152,7 @@ const WalletRouter = () => {
     WalletController.updateWallet
   );
 
-/**
+  /**
    * @openapi
    *   /wallet/{id}:
    *    delete:

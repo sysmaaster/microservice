@@ -12,7 +12,7 @@ function startServer() {
     logger.info(`Example App listening at http://localhost:${port}`);
     startMetricsServer();
     await connect();
-  //socketIO(server)
+    //socketIO(server)
   });
 }
 

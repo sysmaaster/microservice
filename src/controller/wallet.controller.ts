@@ -15,14 +15,14 @@ class WalletController {
   ) {
     try {
       let foundWallets;
-    foundWallets = await walletService.getAllWallets()
-    if (foundWallets) {
-      res.status(HTTP_Status.OK_200).json(foundWallets);
-    } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
-  } catch (e) {
-    log.error(e, "getAllWallets - WalletController");
-    res.sendStatus(HTTP_Status.Server_Error_500);
-  }
+      foundWallets = await walletService.getAllWallets();
+      if (foundWallets) {
+        res.status(HTTP_Status.OK_200).json(foundWallets);
+      } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    } catch (e) {
+      log.error(e, "getAllWallets - WalletController");
+      res.sendStatus(HTTP_Status.Server_Error_500);
+    }
   }
 
   async getWalletFromId(
@@ -31,20 +31,19 @@ class WalletController {
     next: NextFunction
   ) {
     try {
-    let foundWallet;
-    if (!req.params) {
-      res.sendStatus(HTTP_Status.BAD_REQUEST_400);
-      return;
+      let foundWallet;
+      if (!req.params) {
+        res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+        return;
+      }
+      foundWallet = await walletService.getWalletFromId(req.params[0]);
+      if (foundWallet) {
+        res.status(HTTP_Status.OK_200).json(foundWallet);
+      } else res.sendStatus(HTTP_Status.NOT_FOUND_404);
+    } catch (e) {
+      log.error(e, "getWalletFromId - WalletController");
+      res.sendStatus(HTTP_Status.Server_Error_500);
     }
-    foundWallet = await walletService
-      .getWalletFromId(req.params[0])
-    if (foundWallet) {
-      res.status(HTTP_Status.OK_200).json(foundWallet);
-    } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
-  } catch (e) {
-    log.error(e, "getWalletFromId - WalletController");
-    res.sendStatus(HTTP_Status.Server_Error_500);
-  }
   }
 
   async createWallet(
@@ -53,14 +52,14 @@ class WalletController {
     next: NextFunction
   ) {
     try {
-    const Wallet = await walletService.createWallet(req.body)
-    if (Wallet) {
-      res.status(HTTP_Status.CREATED_201).json(Wallet);
-    } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
-  } catch (e) {
-    log.error(e, "createWallet - WalletController");
-    res.sendStatus(HTTP_Status.Server_Error_500);
-  }
+      const Wallet = await walletService.createWallet(req.body);
+      if (Wallet) {
+        res.status(HTTP_Status.CREATED_201).json(Wallet);
+      } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+    } catch (e) {
+      log.error(e, "createWallet - WalletController");
+      res.sendStatus(HTTP_Status.Server_Error_500);
+    }
   }
 
   async updateWallet(
@@ -84,7 +83,7 @@ class WalletController {
       foundWallet = await walletService.deleteWallet(req.params[0]);
       if (foundWallet) {
         res.sendStatus(HTTP_Status.OK_200);
-      } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
+      } else res.sendStatus(HTTP_Status.NOT_FOUND_404);
     } catch (e) {
       log.error(e, "delete - WalletController");
       res.sendStatus(HTTP_Status.Server_Error_500);

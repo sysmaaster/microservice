@@ -7,18 +7,16 @@ const log = logger({
   transport: {
     targets: [
       {
-        target: 'pino/file',
-        options: { hideColor : true , destination: `${_dirname}/app.log`, 
-      },
+        target: "pino/file",
+        options: { hideColor: true, destination: `${_dirname}/app.log` },
       },
       {
-        target: "pino-pretty", 
-      options: {  colorize: true},
+        target: "pino-pretty",
+        options: { colorize: true },
       },
     ],
   },
-  base: {
-  },
+  base: {},
   timestamp: () => `,"time":"${dayjs().format()}"`,
 });
 

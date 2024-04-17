@@ -7,8 +7,7 @@ const invalidPathHandler = (
   res: Response<ErrorResponseModel>,
   next: NextFunction
 ) => {
-  log.error("invalid path |path:" + req.originalUrl
-  );
+  log.error("invalid path |path:" + req.originalUrl);
   res.status(404);
   res.json({ success: false, status: 404, data: "invalid path" });
 };

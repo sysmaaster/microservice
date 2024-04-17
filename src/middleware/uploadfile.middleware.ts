@@ -7,12 +7,14 @@ const maxSize = 2 * 1024 * 1024;
 const _basedir = path.resolve(path.resolve(), "static");
 
 let storage = multer.diskStorage({
-  destination: (req:any, file: any, cb: (arg0: null, arg1: string) => void) => {
+  destination: (
+    req: any,
+    file: any,
+    cb: (arg0: null, arg1: string) => void
+  ) => {
     cb(null, path.resolve(_basedir, "uploads"));
   },
-  filename: (req: any, file:any, 
-    cb: (arg0: null, arg1: any) => void) => {
-
+  filename: (req: any, file: any, cb: (arg0: null, arg1: any) => void) => {
     console.log(file.originalname);
     let ext = file.originalname.substring(
       file.originalname.lastIndexOf("."),

@@ -14,6 +14,8 @@ import invalidPathHandler from "./handler/invalidPath.handler";
 import BasicAuthMiddleware from "./middleware/basicAuth.middleware";
 import UploadRouter from "./router/upload.routes";
 
+const port: string | number = process.env.PORT || 1242;
+
 const app = express();
 
 app.use(cors());
@@ -23,8 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const _dirname = path.resolve(path.resolve(), "./public");
 app.use(express.static(path.resolve(path.resolve(), "./public")));
 
-app.set('view engine', 'ejs'); // configure template engine
-app.set("views", path.resolve(_dirname, "views"));// set express to look in this folder to render our view
+app.set("view engine", "ejs"); // configure template engine
+app.set("views", path.resolve(_dirname, "views")); // set express to look in this folder to render our view
 app.use(
   responseTime(
     (request: express.Request, response: express.Response, time: number) => {
@@ -51,7 +53,7 @@ app.get("/", (req, res) => {
 });
 //app.use(BasicAuthMiddleware); //-- Auth
 
-swaggerDocs(app, 1242);
+swaggerDocs(app, port);
 app.use("/dev", DevsRouter());
 app.use("/wallet", WalletRouter());
 app.use("/categories", CategoriesRouter());

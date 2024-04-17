@@ -3,7 +3,7 @@ var fs = require("fs");
 var path = require("path");
 
 const isDirectory = (pathToDir) => {
-    if (fs.existsSync(pathToDir)) {
+  if (fs.existsSync(pathToDir)) {
     return true;
   } else {
     return false;
@@ -114,7 +114,7 @@ writeFile(e2, es2);
 fileopen("ssd.json", "w")
 const dat = JSON.stringify(getFiles("D:\Архів Фото 06,08"));
 writeFile("ssd.json", dat);
-console.log(dat.length + "   >ssd2");*//*
+console.log(dat.length + "   >ssd2");*/ /*
 console.log(dS2c.length + "   >s2c");*/
 
 //const p1 = "E:\\Архів Фото 06,08";
@@ -128,12 +128,11 @@ console.log(dS2c.length + "   >s2c");*/
 //const dS2c = ([] = JSON.parse(s2c)); //39   >s2c
 
 //const dT1 = ([] = JSON.parse(t1)); //4140 >t1
-//const pE1 = ([] = JSON.parse(readFile(""))); 
-//const ssd = ([] = JSON.parse(readFile("ssd.json"))); 
-//const pE2 = ([] = JSON.parse(readFile("E-File1.json"))); 
+//const pE1 = ([] = JSON.parse(readFile("")));
+//const ssd = ([] = JSON.parse(readFile("ssd.json")));
+//const pE2 = ([] = JSON.parse(readFile("E-File1.json")));
 
 function foRe(ar1, ar2) {
-  
   let is1 = ar1.length;
   let iss2 = 0;
   let is2 = 0;
@@ -149,17 +148,22 @@ function foRe(ar1, ar2) {
   };
   for (var i = ar1.length - 1; i >= 0; i--) {
     let find = false;
-    is2++
-
+    is2++;
 
     const size1 = ar1[i].size;
     const base1 = ar1[i].base;
 
     for (var i2 = ar2.length - 1; i2 >= 0; i2--) {
-iss2++
+      iss2++;
       const size2 = ar2[i2].size;
       const base2 = ar2[i2].base;
-      console.log({iss2, on: ar2.length, find:results.ident_count, step:is2, ETA: (is2/is1)*100});
+      console.log({
+        iss2,
+        on: ar2.length,
+        find: results.ident_count,
+        step: is2,
+        ETA: (is2 / is1) * 100,
+      });
 
       if (size1 == size2) {
         if (base1 != base2) {
@@ -176,7 +180,7 @@ iss2++
         results.ident_count++;
         ar2.splice(i2, 1);
         find = true;
-        break
+        break;
       }
     }
 
@@ -191,7 +195,7 @@ iss2++
   results.a1 = ar1;
   results.a2 = ar2;
   results.new_2_count = ar2.length;
-  fileopen("result.json", "w")
+  fileopen("result.json", "w");
   writeFile("result.json", JSON.stringify(results));
   return results;
 }

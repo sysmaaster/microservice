@@ -13,10 +13,10 @@ import { ObjectId } from "mongodb";
  *          example: testCategories
  *          minLength: 3
  *          maxLength: 30
- *        
+ *
  */
 
 export type CategoriesCreateModel = {
   name: string;
- // HOVER: boolean;
+  // HOVER: boolean;
 };

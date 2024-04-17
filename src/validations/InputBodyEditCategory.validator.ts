@@ -1,7 +1,6 @@
 import { checkSchema } from "express-validator";
 
 export const InputBodyEditCategoryValidation = checkSchema({
-  
   id: {
     exists: {
       errorMessage: "id required",

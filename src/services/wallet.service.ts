@@ -10,7 +10,7 @@ class WalletService {
     if (result) return result;
     return false;
   }
-  
+
   async getWalletFromId(id: string): Promise<WalletResponseModel | {} | false> {
     if (!id) return false;
     let result;

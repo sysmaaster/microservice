@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const WalletSchema = new mongoose.Schema(
   {
+    id: { type: String, required: true, index: true, unique: true },
     W_NAME: { type: String, required: true },
     W_COMMENT: { type: String, required: true },
     SUMMA: { type: Number, required: true },

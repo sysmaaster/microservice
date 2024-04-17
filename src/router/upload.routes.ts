@@ -3,7 +3,6 @@ import { query } from "express-validator";
 import DevsController from "../controller/devs.controller";
 import { InputValidationMiddleware } from "../middleware/inputValidation.middleware";
 import uploadController from "../controller/upload.controller";
- 
 
 const UploadRouter = () => {
   const router = express.Router();
@@ -23,7 +22,6 @@ const UploadRouter = () => {
   router.get("/files", uploadController.getListFiles);
   router.get("/files/:name", uploadController.download);
   router.delete("/files/:name", uploadController.remove);
-
 
   return router;
 };

@@ -1,17 +1,17 @@
-import wallet from "../schema/wallet.schema";
+import DB from "../schema/wallet.schema";
 import { WalletCreateModel } from "../models/walletCreate.model";
 import { databaseResponseTimeHistogram } from "../services/metrics";
 import { WalletEditRequestModel } from "../models/walletEditRequest.model";
+import getCrypto from "../utils/crypto.gen";
 
 class WalletRepositry {
-
   async GetAll() {
     const metricsLabels = {
       operation: "ShowAll",
     };
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
-      const result = await wallet.find({});
+      const result = await DB.find({});
       timer({ ...metricsLabels, success: "true" });
       return result;
     } catch (e) {
@@ -26,7 +26,7 @@ class WalletRepositry {
     };
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
-      const result = await wallet.findOne({ _id: input });
+      const result = await DB.findOne({ id: input });
       timer({ ...metricsLabels, success: "true" });
       return result;
     } catch (e) {
@@ -35,15 +35,23 @@ class WalletRepositry {
     }
   }
 
-  async Create(
-    input: WalletCreateModel
-  ) {
+  async Create(input: WalletCreateModel) {
     const metricsLabels = {
       operation: "createWallet",
     };
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
-      const result = await wallet.create(input);
+      let newW: WalletEditRequestModel = {
+        id: getCrypto(),
+        W_NAME: input.W_NAME,
+        W_COMMENT: input.W_COMMENT,
+        SUMMA: input.SUMMA,
+        LIMIT: input.LIMIT,
+        CCY: input.CCY,
+        TYPE: input.TYPE,
+        HOVER: input.HOVER,
+      };
+      const result = await DB.create(newW);
       timer({ ...metricsLabels, success: "true" });
       return result;
     } catch (e) {
@@ -67,7 +75,7 @@ class WalletRepositry {
         TYPE: upd.TYPE,
         HOVER: upd.HOVER,
       };
-      const result = await wallet.findOneAndUpdate({ _id: upd.id }, udp_data, {
+      const result = await DB.findOneAndUpdate({ id: upd.id }, udp_data, {
         new: true,
       });
       timer({ ...metricsLabels, success: "true" });
@@ -78,20 +86,14 @@ class WalletRepositry {
     }
   }
 
-  async UpdateBal({
-    id,
-    amount,
-  }: {
-    id: string;
-    amount: number;
-  }) {
+  async UpdateBal({ id, amount }: { id: string; amount: number }) {
     const metricsLabels = {
       operation: "UpdateBal",
     };
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
-      let result = await wallet.findByIdAndUpdate(
-        { _id: id },
+      let result = await DB.findByIdAndUpdate(
+        { id: id },
         { SUMMA: amount },
         { new: true }
       );
@@ -102,7 +104,7 @@ class WalletRepositry {
       throw e;
     }
   }
-  
+
   /* async ShowAllSort({
      sort,
    }: {
@@ -119,7 +121,7 @@ class WalletRepositry {
        } else if (sort === "desc") {
          sortType = { sortId: -1 };
        }
-       const result = await wallet.find({}).sort(sortType);
+       const result = await DB.find({}).sort(sortType);
        timer({ ...metricsLabels, success: "true" });
        return result;
      } catch (e) {
@@ -134,7 +136,7 @@ class WalletRepositry {
     };
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
-      const result = await wallet.findByIdAndDelete({ _id: id });
+      const result = await DB.findOneAndDelete({ id: id });
       timer({ ...metricsLabels, success: "true" });
       return result;
     } catch (e) {

@@ -14,8 +14,9 @@ class CategoriesRepositry {
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
       const result = await db.find({});
-      let filter = result.map((el)=>{return {id:el.id,name:el.name}}
-      );
+      let filter = result.map((el) => {
+        return { id: el.id, name: el.name };
+      });
       timer({ ...metricsLabels, success: "true" });
       return filter;
     } catch (e) {
@@ -30,14 +31,14 @@ class CategoriesRepositry {
     };
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
-      let filter
-      if (typeof input === 'string') {
+      let filter;
+      if (typeof input === "string") {
         const result = await db.findOne({ id: input });
-      if(result) filter =  {id:result.id,name:result.name}
-      timer({ ...metricsLabels, success: "true" });
-      return filter;
+        if (result) filter = { id: result.id, name: result.name };
+        timer({ ...metricsLabels, success: "true" });
+        return filter;
       } else {
-        throw new ErrorException(400,"getById" ,"BAD REQEST")
+        throw new ErrorException(400, "getById", "BAD REQEST");
       }
     } catch (e) {
       timer({ ...metricsLabels, success: "false" });
@@ -51,13 +52,13 @@ class CategoriesRepositry {
     };
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
-      let filter
+      let filter;
       let obj = {
         id: getCrypto(),
-        name:input.name
-      }
+        name: input.name,
+      };
       const result = await db.create(obj);
-      if(result) filter =  {id:result.id,name:result.name}
+      if (result) filter = { id: result.id, name: result.name };
       timer({ ...metricsLabels, success: "true" });
       return filter;
     } catch (e) {
@@ -72,18 +73,14 @@ class CategoriesRepositry {
     };
     const timer = databaseResponseTimeHistogram.startTimer();
     try {
-      let filter
+      let filter;
       const udp_data = {
         name: upd.name,
       };
-      const result = await db.findOneAndUpdate(
-        { id: upd.id },
-        udp_data,
-        {
-          new: true,
-        }
-      );
-      if(result) filter =  {id:result.id,name:result.name}
+      const result = await db.findOneAndUpdate({ id: upd.id }, udp_data, {
+        new: true,
+      });
+      if (result) filter = { id: result.id, name: result.name };
       timer({ ...metricsLabels, success: "true" });
       return filter;
     } catch (e) {

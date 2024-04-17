@@ -17,7 +17,7 @@ import { ObjectId } from "mongodb";
  *          example: testWallet
  *          minLength: 3
  *          maxLength: 30
- *        
+ *
  */
 export type CategoriesEditRequestModel = {
   id: string;

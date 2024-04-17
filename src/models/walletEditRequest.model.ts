@@ -1,4 +1,3 @@
-
 /**
  * @openapi
  * components:

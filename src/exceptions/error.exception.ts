@@ -1,4 +1,3 @@
-
 class ErrorException extends Error {
   status: number;
   name: string;
