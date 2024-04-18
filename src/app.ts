@@ -13,6 +13,7 @@ import errorLoggerHandler from "./handler/errorLogger.handler";
 import { restResponseTimeHistogram } from "./services/metrics";
 import invalidPathHandler from "./handler/invalidPath.handler";
 import BasicAuthMiddleware from "./middleware/basicAuth.middleware";
+import UI_Viewer from "./services/ui_viewer";
 
 const port: string | number = process.env.PORT || 1242;
 
@@ -53,14 +54,10 @@ app.use(bodyParser.json()); // parse form data client
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/healthcheck", (req, res) => res.sendStatus(200));
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: "EMILL v6",
-    text: " Працює - ОК",
-  });
-});
+
 //app.use(BasicAuthMiddleware); //-- Auth
 
+UI_Viewer(app, 80);
 swaggerDocs(app, port);
 app.use("/dev", DevsRouter());
 app.use("/wallet", WalletRouter());
