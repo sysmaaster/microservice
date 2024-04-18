@@ -14,7 +14,7 @@ async function connect() {
     run().catch((e) => {});
     mongoose.connection.on("connected", () => log.info("DB Connected"));
     mongoose.connection.on("disconnected", () => {
-      log.fatal("DB lost connections");
+      log.fatal("disconnected - DB lost");
       run().catch(() => {});
     });
     mongoose.connection.on("error", (err) => {

@@ -3,7 +3,7 @@ import { Response, Request, NextFunction } from "express";
 import ErrorException from "../exceptions/error.exception";
 
 class DevsController {
-  help(req: Request, res: Response) {
+  about(req: Request, res: Response) {
     try {
       res.render("help", {
         title: "EMILL v6",

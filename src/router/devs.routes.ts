@@ -16,18 +16,18 @@ import { InputValidationMiddleware } from "../middleware/inputValidation.middlew
  */
 const DevsRouter = () => {
   const router = express.Router();
-  /**help
+  /**about
    * @openapi
-   * /dev/help:
+   * /dev/about:
    *  get:
    *     tags:
    *     - DEV
-   *     description: As Created Date request
+   *     description: about As Created Date and history this APIs
    *     responses:
    *       200:
    *         description: info on create api-s
    */
-  router.get("/help", DevsController.help);
+  router.get("/help", DevsController.about);
 
   /**hello
    * @openapi
