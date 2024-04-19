@@ -19,7 +19,7 @@ const WalletSchema = new mongoose.Schema(
       type: String,
       required: true,
       enum: {
-        values: ["CARD", "DEBIT", "CREDIT"],
+        values: ["CARD", "CREDIT", "DEPOSIT"],
         message: "{VALUE} is not supported TYPE",
       },
     },
