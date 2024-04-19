@@ -2,7 +2,7 @@ import { HTTP_Status } from "../utils/HTTP_Status";
 import { Response, Request, NextFunction } from "express";
 import ErrorException from "../exceptions/error.exception";
 import { RequestWithBody, RequestWithParams } from "../types";
-import log from "../services/logger";
+import log from "../services/logger.service";
 import categoriesService from "../services/categories.service";
 import { CategoriesResponseModel } from "../models/categoriesResponse.model";
 import { CategoriesCreateModel } from "../models/categoriesCreate.model";

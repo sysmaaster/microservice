@@ -1,8 +1,8 @@
-import { databaseResponseTimeHistogram } from "../services/metrics";
+import { databaseResponseTimeHistogram } from "../services/metrics.service";
 import db from "../schema/categories.schema";
 import { CategoriesCreateModel } from "../models/categoriesCreate.model";
 import { CategoriesEditRequestModel } from "../models/categoriesEditRequest.model";
-import log from "../services/logger";
+import log from "../services/logger.service";
 import ErrorException from "../exceptions/error.exception";
 import getCrypto from "../utils/crypto.gen";
 

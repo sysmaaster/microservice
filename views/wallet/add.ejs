@@ -1,0 +1,152 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2">Wallet</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+    <div class="btn-group me-2">
+      <button class="btn btn-sm btn-outline-secondary">?</button>
+    </div>
+  </div>
+</div>
+
+<div class="col py-3">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+          <li class="breadcrumb-item active">New Wallet</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col text-end fw-lighter">
+      <b>UserId</b>
+    </div>
+  </div>
+</div>
+
+<form action="/wallet" method="POST">
+  <div class="row form-group mb-4">
+    <div class="col-6 col-sm-4">
+      <label for="W_NAME">W_NAME</label>
+      <input
+        type="text"
+        class="form-control"
+        id="W_NAME"
+        name="W_NAME"
+        value="Карта Для Виплат"
+        placeholder="Карта Для Виплат"
+        required
+      />
+    </div>
+
+    <div class="col-6 col-sm-4">
+      <label for="W_COMMENT">W_COMMENT</label>
+      <input
+        type="text"
+        class="form-control"
+        id="W_COMMENT"
+        name="W_COMMENT"
+        value="Зарплатка"
+        placeholder="Зарплатка"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="row form-group mb-4">
+    <div class="col-6 col-sm-4">
+      <label for="SUMMA">SUMMA</label>
+      <input
+        type="text"
+        class="form-control"
+        id="SUMMA"
+        name="SUMMA"
+        value="0.00"
+        placeholder="0.00"
+        required
+      />
+    </div>
+
+    <div class="col-6 col-sm-4">
+      <label for="LIMIT">LIMIT</label>
+      <input
+        type="text"
+        class="form-control"
+        id="LIMIT"
+        name="LIMIT"
+        value="0.00"
+        placeholder="0.00"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="row form-group mb-4">
+    <div class="col-6 col-sm-4">
+      <label for="LIMIT">CCY</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="CCY" id="UAH" value="UAH" checked>
+        <label class="form-check-label" for="UAH">
+          UAH
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="CCY" id="USD" value="USD" >
+        <label class="form-check-label" for="USD">
+          USD
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="CCY" id="EUR" value="EUR" >
+        <label class="form-check-label" for="EUR">
+          EUR
+        </label>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm-4">
+      <label for="LIMIT">TYPE</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="TYPE" id="CARD" value="CARD" checked>
+        <label class="form-check-label" for="CARD">
+          CARD
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="TYPE" id="CREDIT" value="CREDIT" >
+        <label class="form-check-label" for="CREDIT">
+          CREDIT
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="TYPE" id="DEPOSIT" value="DEPOSIT" >
+        <label class="form-check-label" for="DEPOSIT">
+          DEPOSIT
+        </label>
+      </div>
+
+    </div>
+  </div>
+  <div class="row form-group mb-4">
+    <div class="col-6 col-sm-4">
+      <label for="LIMIT">HOVER ?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="HOVER" value="true" id="true">
+        <label class="form-check-label" for="true">
+          true
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="HOVER" value="false" id="false" checked>
+        <label class="form-check-label" for="false">
+          false
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mb-4">
+    <button type="submit" class="btn btn-primary">Add Wallet</button>
+  </div>
+</form>

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { validationResult, matchedData } from "express-validator";
 import { HTTP_Status } from "../utils/HTTP_Status";
 import { ErrorResponseModel } from "../models/errorResponse.model";
-import log from "../services/logger";
+import log from "../services/logger.service";
 
 /**
  * send status BAD_REQUEST 400
