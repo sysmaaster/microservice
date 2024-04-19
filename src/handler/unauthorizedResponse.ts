@@ -1,5 +1,5 @@
 import { ErrorResponseModel } from "../models/errorResponse.model";
-import log from "../services/logger";
+import log from "../services/logger.service";
 
 export const getUnauthorizedResponse = (req: any): ErrorResponseModel => {
   log.error(

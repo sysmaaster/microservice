@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import ErrorException from "../exceptions/error.exception";
-import log from "../services/logger";
+import log from "../services/logger.service";
 
 const errorLoggerHandler = (
   err: ErrorException,

@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from "express";
 import { ErrorResponseModel } from "../models/errorResponse.model";
-import log from "../services/logger";
+import log from "../services/logger.service";
 
 const invalidPathHandler = (
   req: Request,

@@ -1,6 +1,6 @@
 import DB from "../schema/wallet.schema";
 import { WalletCreateModel } from "../models/walletCreate.model";
-import { databaseResponseTimeHistogram } from "../services/metrics";
+import { databaseResponseTimeHistogram } from "../services/metrics.service";
 import { WalletEditRequestModel } from "../models/walletEditRequest.model";
 import getCrypto from "../utils/crypto.gen";
 

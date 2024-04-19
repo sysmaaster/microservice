@@ -1,8 +1,8 @@
 import { Express, Request, Response } from "express";
-import log from "./logger";
+import log from "./logger.service";
 
 const UI_Viewer = (app: Express, port: number | string) => {
-  // Docs in JSON format
+  
   app.get("/", (req, res) => {
     const locals = {
       title: "NodeJs",

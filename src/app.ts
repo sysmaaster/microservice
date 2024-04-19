@@ -3,14 +3,14 @@ import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
 import responseTime from "response-time";
-import swaggerDocs from "./services/swagger";
+import swaggerDocs from "./services/swagger.service";
 import DevsRouter from "./router/devs.routes";
 import UploadRouter from "./router/upload.routes";
 import WalletRouter from "./router/wallet.routes";
 import CategoriesRouter from "./router/categories.routes";
 import errorMiddleware from "./middleware/error.middleware";
 import errorLoggerHandler from "./handler/errorLogger.handler";
-import { restResponseTimeHistogram } from "./services/metrics";
+import { restResponseTimeHistogram } from "./services/metrics.service";
 import invalidPathHandler from "./handler/invalidPath.handler";
 import BasicAuthMiddleware from "./middleware/basicAuth.middleware";
 import UI_Viewer from "./services/ui_viewer";
@@ -69,7 +69,7 @@ app.use(
 );
 
 // Flash Messages
-app.use(flash({ sessionKeyName: 'flashMessage' }));
+app.use(flash());//{ sessionKeyName: 'flashMessage' }
 
 // Templating Engine
 app.use(expressLayout);

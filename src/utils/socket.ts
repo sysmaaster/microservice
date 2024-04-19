@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-import log from "../services/logger";
+import log from "../services/logger.service";
 
 function socketIO(server: any) {
   const io = new Server(server);

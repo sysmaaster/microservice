@@ -4,7 +4,7 @@ import ErrorException from "../exceptions/error.exception";
 import { WalletResponseModel } from "../models/walletResponse.model";
 import { RequestWithBody, RequestWithParams, RequestWithQuery } from "../types";
 import walletService from "../services/wallet.service";
-import log from "../services/logger";
+import log from "../services/logger.service";
 import { WalletEditRequestModel } from "../models/walletEditRequest.model";
 
 class WalletController {
