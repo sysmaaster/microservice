@@ -1,5 +1,7 @@
-import fs from "fs";
+import * as fs from "fs";
 import path from "path";
+
+import { randomBytes } from 'crypto'
 
 function readFile(file) {
   return fs.readFileSync(file, "utf8", (err, d) => {
@@ -108,7 +110,7 @@ const copyFile = (dat, prefix) => {
       const element = dat[i];
       fs.copyFileSync(
         element.src,
-        `D:\\apendFilleSrever\\data\\${element.base}`
+        `D:\\apendFilleSrever\\${randomBytes(6).toString("hex")}${element.ext}`
       );
     } catch (error) {
       console.log(error);

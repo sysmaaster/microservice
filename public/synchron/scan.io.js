@@ -1,6 +1,7 @@
-const e = require("cors");
+
 var fs = require("fs");
 var path = require("path");
+var crypto = require("crypto")
 
 const isDirectory = (pathToDir) => {
   if (fs.existsSync(pathToDir)) {
@@ -81,7 +82,7 @@ const getFiles = (dir, files_) => {
       const statData2 = path.parse(name);
 
       data = {
-        uid: "rand",
+        uid: crypto.randomBytes(6).toString("hex"),
         src: path.join(statData2.dir, statData2.base),
         srcLoc: path.join(statData2.dir, statData2.base),
         dir: statData2.dir || "",
@@ -89,11 +90,10 @@ const getFiles = (dir, files_) => {
         ext: statData2.ext || "",
         name: statData2.name || "",
         size: statData.size || "",
-        times: {
           mtime: statData.mtime || "",
           atime: statData.atime || "",
           ctime: statData.ctime || "",
-        },
+        
       };
       files_.push(data);
     }
