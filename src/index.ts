@@ -10,7 +10,7 @@ function startServer() {
   const port: string | number = process.env.PORT || 1242;
   server.listen(port, async () => {
     logger.info(`Example App listening at http://localhost:${port}`);
-    //startMetricsServer();
+    startMetricsServer();
     await connect();
     //socketIO(server)
   });

@@ -83,7 +83,7 @@ app.get("/healthcheck", (req, res) => res.sendStatus(200));
 //-- Auth
 //app.use(BasicAuthMiddleware); 
 
-UI_Viewer(app, 80);
+UI_Viewer(app, 8080);
 swaggerDocs(app, port);
 
 // Routes
