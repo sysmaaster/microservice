@@ -12,9 +12,9 @@
     "sync": "browser-sync start --proxy \"http://localhost/\" --files \"views/**/*.*\"",
     "test": "jest",
     "build": "tsc",
-    "s": "docker-compose down && docker-compose build && docker-compose up -d ",
-    "c": "docker-compose up -d ",
-    "d": "docker-compose down "
+    "s": "sudo docker-compose down && sudo docker-compose build && sudo docker-compose up -d ",
+    "c": "sudo docker-compose up -d ",
+    "d": "sudo docker-compose down "
   },
   "dependencies": {
     "connect-flash": "^0.1.1",

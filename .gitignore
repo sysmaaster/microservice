@@ -4,4 +4,4 @@ dist/
 .idea/
 app.log
 public/synchron/**.json
-mongodb
+docker/volume/mongodb
