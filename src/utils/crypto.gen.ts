@@ -1,5 +1,4 @@
 import crypto from "crypto";
-import ErrorException from "../exceptions/error.exception";
 
 /**
  * functiion generic rendon string

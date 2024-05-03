@@ -1,8 +1,8 @@
 import app from "./app";
 import logger from "./services/logger.service";
 import { startMetricsServer } from "./services/metrics.service";
-import connect from "./services/MongoDB_Connect.service";
 import { createServer } from "http";
+import connect from "./services/MongoDB_Connect.service";
 import socketIO from "./utils/socket";
 
 function startServer() {
@@ -11,7 +11,7 @@ function startServer() {
   server.listen(port, async () => {
     logger.info(`Example App listening at http://localhost:${port}`);
     startMetricsServer();
-    await connect();
+   // await connect();
     //socketIO(server)
   });
 }

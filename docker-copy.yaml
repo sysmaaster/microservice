@@ -9,24 +9,6 @@ services:
     ports:
       - 5000:5000
 
-  categories:
-    container_name: categories-microservices
-    build: 
-     context: ./_categories-microservice
-    volumes:
-      - ./_categories-microservice:/app
-    ports:
-      - 1243:1242
-
-  wallet:
-    container_name: wallet-microservices
-    build: 
-     context: ./_wallet-microservice
-    volumes:
-      - ./_wallet-microservice:/app
-    ports:
-      - 1244:1242
-
   php:
     container_name: php
     build: 

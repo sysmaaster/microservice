@@ -4,4 +4,6 @@ dist/
 .idea/
 app.log
 public/synchron/**.json
-docker/volume/mongodb
+docker/volume/mongodb/
+docker/volume/mysql/
+static/uploads/
