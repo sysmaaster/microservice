@@ -5,7 +5,6 @@ import bodyParser from "body-parser";
 import responseTime from "response-time";
 import swaggerDocs from "./services/swagger.service";
 import DevsRouter from "./router/devs.routes";
-import UploadRouter from "./router/upload.routes";
 import WalletRouter from "./router/wallet.routes";
 import CategoriesRouter from "./router/categories.routes";
 import errorMiddleware from "./middleware/error.middleware";
@@ -13,7 +12,6 @@ import errorLoggerHandler from "./handler/errorLogger.handler";
 import { restResponseTimeHistogram } from "./services/metrics.service";
 import invalidPathHandler from "./handler/invalidPath.handler";
 import BasicAuthMiddleware from "./middleware/basicAuth.middleware";
-import UI_Viewer from "./services/ui_viewer";
 import expressLayout from 'express-ejs-layouts'
 import flash from 'connect-flash';
 import session from 'express-session';
@@ -83,14 +81,12 @@ app.get("/healthcheck", (req, res) => res.sendStatus(200));
 //-- Auth
 //app.use(BasicAuthMiddleware); 
 
-UI_Viewer(app, 8080);
 swaggerDocs(app, port);
 
 // Routes
 app.use("/dev", DevsRouter());
 app.use("/wallet", WalletRouter());
 app.use("/categories", CategoriesRouter());
-app.use("/upload", UploadRouter());
 
 app.use(errorLoggerHandler); //-- ErrorException
 app.use(errorMiddleware); //-- ErrorException

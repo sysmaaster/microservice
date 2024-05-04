@@ -15,13 +15,12 @@ let storage = multer.diskStorage({
     cb(null, path.resolve(_basedir, "uploads"));
   },
   filename: (req: any, file: any, cb: (arg0: null, arg1: any) => void) => {
-    console.log(file.originalname);
     let ext = file.originalname.substring(
       file.originalname.lastIndexOf("."),
       file.originalname.length
     );
     //cb(null, getCrypto(4) + ext);
-    cb(null, file.originalname);
+    cb(null, file.originalname +"_crypto_"+ getCrypto()+ ext);
   },
 });
 
