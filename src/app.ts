@@ -11,11 +11,11 @@ import errorMiddleware from "./middleware/error.middleware";
 import errorLoggerHandler from "./handler/errorLogger.handler";
 import { restResponseTimeHistogram } from "./services/metrics.service";
 import invalidPathHandler from "./handler/invalidPath.handler";
-import BasicAuthMiddleware from "./middleware/basicAuth.middleware";
-import expressLayout from 'express-ejs-layouts'
-import flash from 'connect-flash';
-import session from 'express-session';
-import methodOverride from 'method-override';
+//import BasicAuthMiddleware from "./middleware/basicAuth.middleware";
+//import expressLayout from 'express-ejs-layouts'
+//import flash from 'connect-flash';
+//import session from 'express-session';
+//import methodOverride from 'method-override';
 
 const port: string | number = process.env.PORT || 1242;
 
@@ -49,9 +49,10 @@ app.use(
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // parse form data client
-app.use(methodOverride('_method'));
 
-// Static Files
+/*app.use(methodOverride('_method'));
+
+/// Static Files
 app.use(express.static(path.resolve(path.resolve(), "public")));
 
 // Express Session
@@ -71,7 +72,8 @@ app.use(flash());//{ sessionKeyName: 'flashMessage' }
 
 // Templating Engine
 app.use(expressLayout);
-app.set('layout', './layouts/main');
+app.set('layout', './layouts/main');*/
+
 app.set("view engine", "ejs"); // configure template engine
 app.set("views", path.resolve(path.resolve(), "views")); // set express to look in this folder to render our view
 
