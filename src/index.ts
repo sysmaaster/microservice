@@ -11,7 +11,7 @@ function startServer() {
   server.listen(port, async () => {
     logger.info(`Example App listening at http://localhost:${port}`);
     startMetricsServer();
-   // await connect();
+    await connect();
     //socketIO(server)
   });
 }
