@@ -41,7 +41,7 @@ const WalletRouter = () => {
    *                $ref: '#/components/schemas/ErrorResponseModel'
    *
    */
-  router.get(/^\/(?:([^\/]+?))\/?$/i, WalletController.getWalletFromId);
+  router.get("/:id", WalletController.getWalletFromId);
 
   /**getAllWalets
    * @openapi
@@ -146,7 +146,7 @@ const WalletRouter = () => {
    *
    */
   router.put(
-    "/",
+    "/:id",
     InputBodyWalletValidation,
     InputValidationMiddleware,
     WalletController.updateWallet
@@ -185,7 +185,7 @@ const WalletRouter = () => {
    *          example: 53b1c579bdf3de74f76bdac9
    *
    */
-  router.delete(/^\/(?:([^\/]+?))\/?$/i, WalletController.deleteWallet);
+  router.delete("/:id", WalletController.deleteWallet);
 
   return router;
 };

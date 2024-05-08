@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsc -w",
-    "server": "nodemon ./dist/index.js",
+    "server": "nodemon --watch dist ./dist/index.js",
     "test": "jest",
     "build": "tsc",
     "s": "sudo docker-compose down && sudo docker-compose build && sudo docker-compose up -d ",
@@ -40,7 +40,6 @@
     "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
-    "yarn": "^1.22.22",
     "@types/connect-flash": "^0.0.40",
     "@types/cors": "^2.8.17",
     "@types/ejs": "^3.1.3",
@@ -59,7 +58,8 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "yarn": "^1.22.22"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

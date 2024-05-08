@@ -25,17 +25,18 @@ class WalletController {
   }
 
   async getWalletFromId(
-    req: RequestWithParams<string>,
+    req: RequestWithParams<{ id: string}>,
     res: Response<WalletResponseModel | {}>,
     next: NextFunction
   ) {
     try {
       let foundWallet;
-      if (!req.params) {
+      
+      if (!req.params.id) {
         res.sendStatus(HTTP_Status.BAD_REQUEST_400);
         return;
       }
-      foundWallet = await walletService.getWalletFromId(req.params[0]);
+      foundWallet = await walletService.getWalletFromId(req.params.id);
       if (foundWallet) {
         res.status(HTTP_Status.OK_200).json(foundWallet);
       } else res.sendStatus(HTTP_Status.NOT_FOUND_404);

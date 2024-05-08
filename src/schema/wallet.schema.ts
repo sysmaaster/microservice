@@ -24,6 +24,14 @@ const WalletSchema = new mongoose.Schema(
       },
     },
     HOVER: { type: Boolean, require: true },
+    createdAt: {
+      type: Date,
+      default: Date.now()
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now()
+    }
   },
   {
     collection: "wallets",
