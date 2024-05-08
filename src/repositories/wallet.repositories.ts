@@ -60,7 +60,7 @@ class WalletRepositry {
     }
   }
 
-  async Update(upd: WalletEditRequestModel) {
+  async Update(upd: WalletEditRequestModel,id:string) {
     const metricsLabels = {
       operation: "Update",
     };
@@ -75,7 +75,7 @@ class WalletRepositry {
         TYPE: upd.TYPE,
         HOVER: upd.HOVER,
       };
-      const result = await DB.findOneAndUpdate({ id: upd.id }, udp_data, {
+      const result = await DB.findOneAndUpdate({ id }, udp_data, {
         new: true,
       });
       timer({ ...metricsLabels, success: "true" });

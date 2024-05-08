@@ -10,6 +10,7 @@ import errorMiddleware from "./middleware/error.middleware";
 import errorLoggerHandler from "./handler/errorLogger.handler";
 import { restResponseTimeHistogram } from "./services/metrics.service";
 import invalidPathHandler from "./handler/invalidPath.handler";
+import session from "express-session";
 //import BasicAuthMiddleware from "./middleware/basicAuth.middleware";
 //import expressLayout from 'express-ejs-layouts'
 //import flash from 'connect-flash';
@@ -53,7 +54,7 @@ app.use(bodyParser.json()); // parse form data client
 
 /// Static Files
 app.use(express.static(path.resolve(path.resolve(), "public")));
-
+*/
 // Express Session
 app.use(
   session({
@@ -65,7 +66,7 @@ app.use(
     }
   })
 );
-
+/*
 // Flash Messages
 app.use(flash());//{ sessionKeyName: 'flashMessage' }
 

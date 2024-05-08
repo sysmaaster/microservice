@@ -29,10 +29,11 @@ class WalletService {
   }
 
   async updateWallet(
-    updWallet: WalletEditRequestModel
+    updWallet: WalletEditRequestModel,
+    id:string
   ): Promise<WalletResponseModel | {} | false> {
     let result;
-    result = await Wallet.Update(updWallet);
+    result = await Wallet.Update(updWallet,id);
     if (result) return result;
     return false;
   }

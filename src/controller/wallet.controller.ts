@@ -63,11 +63,11 @@ class WalletController {
   }
 
   async updateWallet(
-    req: RequestWithBody<WalletEditRequestModel>,
+    req: { body: WalletEditRequestModel; params: { id: string; }; },
     res: Response<WalletResponseModel | {}>
   ) {
     try {
-      const Wallet = await walletService.updateWallet(req.body);
+      const Wallet = await walletService.updateWallet(req.body, req.params.id);
       if (Wallet) {
         res.status(HTTP_Status.CREATED_201).json(Wallet);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
@@ -77,10 +77,10 @@ class WalletController {
     }
   }
 
-  async deleteWallet(req: RequestWithParams<string>, res: Response<{}>) {
+  async deleteWallet(req: RequestWithParams<{id:string}>, res: Response<{}>) {
     try {
       let foundWallet;
-      foundWallet = await walletService.deleteWallet(req.params[0]);
+      foundWallet = await walletService.deleteWallet(req.params.id);
       if (foundWallet) {
         res.sendStatus(HTTP_Status.OK_200);
       } else res.sendStatus(HTTP_Status.NOT_FOUND_404);
