@@ -14,8 +14,8 @@ services:
   mongo_express:
     container_name: Mongo-UI
     image: mongo-express:latest
-   # ports:
-   #   - 8081:8081
+    ports:
+      - 8081:8081
     depends_on:
       - "mongo"
     environment:
@@ -29,13 +29,13 @@ services:
 
       ME_CONFIG_SITE_BASEURL: /api/mongo/
 
-  node-red:
+  node_red:
     image: nodered/node-red:latest
     container_name: node-red
     environment:
       - TZ=Europe/Kyiv
-   # ports:
-   #   - "1880:1880"
+    ports:
+      - "1880:1880"
     volumes:
       - ./docker/volume/node_red:/data
 
@@ -47,7 +47,7 @@ services:
       - ./docker/balancer/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - mongo_express
-      - node-red
+      - node_red
     ports:
       - "1280:80"
       - "80:80"
@@ -55,4 +55,4 @@ services:
     links:
       - mongo_express
       - mongo
-      - node-red
+      - node_red
