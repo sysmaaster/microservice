@@ -1,54 +1,17 @@
 [
     {
-        "id": "61c5e16b0be4839c",
+        "id": "9efb5f2ee1083070",
         "type": "tab",
-        "label": "Tutorial",
+        "label": "Поток 1",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "5c3e42e8480bed8e",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "Mosquitto-Broker",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "7caf62dec0d49023",
-        "type": "comment",
-        "z": "61c5e16b0be4839c",
-        "name": "Welcome to Link-Nodes",
-        "info": "",
-        "x": 660,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "5133180af41725a1",
+        "id": "85add31f19547a80",
         "type": "inject",
-        "z": "61c5e16b0be4839c",
-        "name": "Click here",
+        "z": "9efb5f2ee1083070",
+        "name": "",
         "props": [
             {
                 "p": "payload"
@@ -60,54 +23,80 @@
         ],
         "repeat": "",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "Hello World",
-        "payloadType": "str",
-        "x": 520,
-        "y": 420,
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 260,
         "wires": [
             [
-                "a7979b69687fa18e"
+                "25d7d6501be4428a"
             ]
         ]
     },
     {
-        "id": "a7979b69687fa18e",
+        "id": "a13d2efb4ee3f71c",
+        "type": "http response",
+        "z": "9efb5f2ee1083070",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "fc86cffd37d73b8d",
+        "type": "http in",
+        "z": "9efb5f2ee1083070",
+        "name": "",
+        "url": "/sa",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "78bb6663481c7d90"
+            ]
+        ]
+    },
+    {
+        "id": "78bb6663481c7d90",
+        "type": "template",
+        "z": "9efb5f2ee1083070",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "This is the payload: {{payload}} !",
+        "output": "str",
+        "x": 440,
+        "y": 180,
+        "wires": [
+            [
+                "a13d2efb4ee3f71c"
+            ]
+        ]
+    },
+    {
+        "id": "25d7d6501be4428a",
         "type": "debug",
-        "z": "61c5e16b0be4839c",
-        "name": "Print Message",
+        "z": "9efb5f2ee1083070",
+        "name": "debug 1",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 820,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "18baeed96f339814",
-        "type": "comment",
-        "z": "61c5e16b0be4839c",
-        "name": "About this node",
-        "info": "You can view this by clicking on the bug icon in the top right corner",
-        "x": 820,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "10a62896aa0f7f2b",
-        "type": "comment",
-        "z": "61c5e16b0be4839c",
-        "name": "About this node",
-        "info": "Click on the square on left side of the node",
-        "x": 500,
-        "y": 460,
+        "x": 520,
+        "y": 280,
         "wires": []
     }
 ]

@@ -7,7 +7,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     ports:
-      - "27117:27017"
+      - "27017:27017"
     volumes:
       - ./docker/volume/mongodb:/data/db
 
@@ -21,17 +21,19 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27117/
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
 
       ME_CONFIG_BASICAUTH: "true"
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: sasa1234
 
-      ME_CONFIG_SITE_BASEURL: /api/mongo/
+      ME_CONFIG_SITE_BASEURL: /ui/mongo
 
   node_red:
     build: ./docker/node-red/
     container_name: Node-RED
+    environment:
+      - http_proxy=http:/36.89.99.86:1280
     ports:
       - "1880:1880" 
     volumes:
