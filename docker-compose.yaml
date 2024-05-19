@@ -11,12 +11,7 @@ services:
       - "27017:27017"
     volumes:
       - ./docker/volume/mongodb:/data/db
-    deploy:
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3
-        window: 120s
+      
 #===>END
 ##
 ### MONGO UI ===> 
@@ -37,30 +32,20 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: sasa1234
 
       ME_CONFIG_SITE_BASEURL: /ui/mongo
-    deploy:
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3
-        window: 120s
+      
 #===>END 
 ##       
 ### NODE_RED ==>
   node_red:
     build: ./docker/node-red/
     container_name: Node-RED
-    environment:
-      - http_proxy=http:/36.89.99.86:1280
+    #environment:
+    #  - http_proxy=http://188.190.37.193:21280
     ports:
       - "1880:1880" 
     volumes:
       - ./docker/node-red/data:/data
-    deploy:
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3
-        window: 120s
+      
 #===>END
 ##
 ### BALANCER ==>
@@ -70,25 +55,22 @@ services:
     volumes:
       - ./docker/balancer/sites-enabled:/etc/nginx/sites-enabled
       - ./docker/balancer/nginx.conf:/etc/nginx/nginx.conf
-      - ./docker/cert/code.key:/root/ssl/key.pem
-      - ./docker/cert/code.crt:/root/ssl/cert.pem
     #depends_on:
     #  - mongo_express
     #  - node_red
     ports:
-      - "1280:80"
+      - "21280:80"
       - "80:80"
-      - "443:443"
+    #  - "443:443"
     links:
       - mongo_express
-      - mongo
       - node_red
-    deploy:
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3
-        window: 120s
+    
 #===>END
 ##
-###
+### 
+  
+  
+#===>END
+##
+### 

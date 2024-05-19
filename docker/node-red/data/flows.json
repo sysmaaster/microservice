@@ -21,7 +21,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "1",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
@@ -43,8 +43,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 670,
-        "y": 240,
+        "x": 610,
+        "y": 180,
         "wires": []
     },
     {
@@ -57,7 +57,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 250,
-        "y": 160,
+        "y": 180,
         "wires": [
             [
                 "78bb6663481c7d90"
@@ -73,7 +73,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "This is the payload: {{payload}} !",
+        "template": " OK!",
         "output": "str",
         "x": 440,
         "y": 180,
@@ -92,11 +92,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 280,
+        "x": 480,
+        "y": 260,
         "wires": []
     }
 ]
