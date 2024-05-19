@@ -1,5 +1,6 @@
 version: "3"
 services:
+### MONGO DB ==> 
   mongo:
     container_name: Mongo-DB
     image: mongo:latest
@@ -10,7 +11,15 @@ services:
       - "27017:27017"
     volumes:
       - ./docker/volume/mongodb:/data/db
-
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+#===>END
+##
+### MONGO UI ===> 
   mongo_express:
     container_name: Mongo-UI
     image: mongo-express:latest
@@ -28,7 +37,15 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: sasa1234
 
       ME_CONFIG_SITE_BASEURL: /ui/mongo
-
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+#===>END 
+##       
+### NODE_RED ==>
   node_red:
     build: ./docker/node-red/
     container_name: Node-RED
@@ -38,14 +55,23 @@ services:
       - "1880:1880" 
     volumes:
       - ./docker/node-red/data:/data
-    restart: always # Container will automaticly startup
-
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+#===>END
+##
+### BALANCER ==>
   balancer:
     container_name: "balancer"
     image: nginx
     volumes:
       - ./docker/balancer/sites-enabled:/etc/nginx/sites-enabled
       - ./docker/balancer/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/cert/code.key:/root/ssl/key.pem
+      - ./docker/cert/code.crt:/root/ssl/cert.pem
     #depends_on:
     #  - mongo_express
     #  - node_red
@@ -57,3 +83,12 @@ services:
       - mongo_express
       - mongo
       - node_red
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+#===>END
+##
+###
