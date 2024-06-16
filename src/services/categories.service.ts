@@ -27,10 +27,11 @@ class CategoriesService {
   }
 
   async update(
-    updCatg: CategoriesEditRequestModel
+    updCatg: CategoriesEditRequestModel,
+    id:string    
   ): Promise<CategoriesResponseModel | {} | false> {
     let result;
-    result = await repo.Update(updCatg);
+    result = await repo.Update(updCatg,id);
     if (result) return result;
     return false;
   }

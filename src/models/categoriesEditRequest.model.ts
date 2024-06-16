@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 /**
  * @openapi
  * components:

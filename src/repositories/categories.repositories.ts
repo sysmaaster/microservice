@@ -67,7 +67,7 @@ class CategoriesRepositry {
     }
   }
 
-  async Update(upd: CategoriesEditRequestModel) {
+  async Update(upd: CategoriesEditRequestModel,id:string) {
     const metricsLabels = {
       operation: "Update categories",
     };
@@ -77,7 +77,7 @@ class CategoriesRepositry {
       const udp_data = {
         name: upd.name,
       };
-      const result = await db.findOneAndUpdate({ id: upd.id }, udp_data, {
+      const result = await db.findOneAndUpdate({ id }, udp_data, {
         new: true,
       });
       if (result) filter = { id: result.id, name: result.name };
