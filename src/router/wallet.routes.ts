@@ -112,7 +112,7 @@ const WalletRouter = () => {
     WalletController.createWallet
   );
 
-  /**
+  /**updateWallet
    * @openapi
    *  /wallet:
    *    put:
@@ -152,7 +152,7 @@ const WalletRouter = () => {
     WalletController.updateWallet
   );
 
-  /**
+  /**deleteWallet
    * @openapi
    *   /wallet/{id}:
    *    delete:
