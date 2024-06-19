@@ -4,14 +4,15 @@ FROM node:18 AS build
 WORKDIR /app
 
 COPY package.json .
+COPY yarn.lock .
 
-RUN  npm install -g npm@10.8.0
+#RUN  npm install -g npm@10.8.0
 
-RUN npm install
+RUN yarn
 
 COPY . .
 
-RUN npm run build
+RUN yarn build
 
 #Production stage
 #FROM node:18 AS production

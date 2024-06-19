@@ -4,12 +4,12 @@ import log from "./logger.service";
 async function connect() {
   const dbUri: string =
     process.env.CONNECT_URL ||
-    "mongodb://root:example@36.89.99.100:27017/monefly?authMechanism=DEFAULT&authSource=admin";
-   // "mongodb://root:example@localhost:27017/monefly?authMechanism=DEFAULT&authSource=admin";
+   // "mongodb://root:example@36.89.99.100:27017/monefly?authMechanism=DEFAULT&authSource=admin";
+    "mongodb://root:example@localhost:27017/monefly?authMechanism=DEFAULT&authSource=admin";
 
   try {
     const run = async () => {
-      log.info("Calling DB...");
+      log.warn("Calling DB...");
       await mongoose.connect(dbUri);
     };
     run().catch((e) => {});
