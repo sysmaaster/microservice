@@ -1,42 +1,30 @@
-version: "3.7"
-
+version: "3"
 networks:
-  mongo:
-    name: mongo
+  mongo_netw:
     external: true
-  frontend:
+    name: mongo_netw
+  frontend_netw:
     driver: bridge
-    name: frontend
-
+    name: frontend_netw
 services:
-  mongo:
-    container_name: Mongo-DB
-    image: mongo:latest
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./volume/mongodb:/data/db
-    restart: always
-  microservice:
-    container_name: microservice
+  api:
+    hostname: api_service
+    container_name: api_service
     build:
       context: .
+      dockerfile: ./Dockerfile
       target: build
     volumes:
       - ./:/app/
       - /app/node_modules/
     ports:
-      - 21242:21242
-      - 29100:9100
+      - 8080:21242
+      - 9100:9100
     restart: always
     networks:
-      - frontend
+      - frontend_netw
+      - mongo_netw
     environment:
       - PORT=21242
       - CONNECT_URL=mongodb://root:example@mongo:27017/monefly?authMechanism=DEFAULT&authSource=admin
-
-      - CONNECT_URL2=mongodb://root:example@localhost:27017/monefly?authMechanism=DEFAULT&authSource=admin
     command: yarn dev
