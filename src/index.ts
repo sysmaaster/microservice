@@ -5,6 +5,7 @@ import logger from "./services/logger.service";
 import connect from "./services/MongoDB_Connect.service";
 import { startMetricsServer } from "./services/metrics.service";
 import socketIO from "./utils/socket";
+import 'dotenv/config'
 
 function start_Api_Server() {
   const server = createServer(app);

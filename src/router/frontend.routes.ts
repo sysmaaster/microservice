@@ -1,5 +1,7 @@
 import express from "express";
 import log from "../services/logger.service";
+import walletService from "../services/wallet.service";
+import categoriesService from "../services/categories.service";
 
 const Router = () => {
   const router = express.Router();
@@ -13,21 +15,14 @@ const Router = () => {
     try {
       let wallets: any = [];
       let categories: any = [];
-
-      /*************
-       * 
-       * 
-       * 
-       * 
-       * 
-       * ****** */
-      /*************
-       * 
-       * 
-       * 
-       * 
-       * 
-       * ****** */
+      let req1 = await walletService.getAllWallets();
+      if (req1) {
+        wallets = req1;
+      }
+      let req2 = await categoriesService.getAll();
+      if (req2) {
+        categories = req2;
+      }
       const messages = req.flash("info");
       res.render("index", {
         locals,
@@ -62,32 +57,28 @@ const Router = () => {
       description: "Free NodeJs User Management System",
     };
 
-      /*************
-       * 
-       * 
-       * 
-       * 
-       * 
-       * ****** */
+    /*************
+     *
+     *
+     *
+     *
+     *
+     * ****** */
     res.render("wallet/add", locals);
   });
 
   /** render wallet/view */
   router.get("/wallet/view/:id", async (req, res) => {
     try {
-      const wallets_item: any = [];
+      let wallets_item: any = {};
       const locals = {
         title: "View Customer Data",
         description: "Free NodeJs User Management System",
       };
-
-      /*************
-       * 
-       * 
-       * 
-       * 
-       * 
-       * ****** */
+      let req1 = await walletService.getWalletFromId(req.params.id);
+      if (req1) {
+        wallets_item = req1;
+      }
       res.render("wallet/view", {
         locals,
         wallets_item,
@@ -100,19 +91,15 @@ const Router = () => {
   /** render wallet/edit */
   router.get("/wallet/edit/:id", async (req, res) => {
     try {
-      const wallets_item: any = [];
+      let wallets_item: any = {};
       const locals = {
         title: "View Customer Data",
         description: "Free NodeJs User Management System",
       };
-
-      /*************
-       * 
-       * 
-       * 
-       * 
-       * 
-       * ****** */
+      let req1 = await walletService.getWalletFromId(req.params.id);
+      if (req1) {
+        wallets_item = req1;
+      }
       res.render("wallet/edit", {
         locals,
         wallets_item,
@@ -128,13 +115,13 @@ const Router = () => {
       description: "Free NodeJs User Management System",
     };
 
-      /*************
-       * 
-       * 
-       * 
-       * 
-       * 
-       * ****** */
+    /*************
+     *
+     *
+     *
+     *
+     *
+     * ****** */
     res.render("categories/add", locals);
   });
   /** render wallet/edit */
@@ -142,11 +129,11 @@ const Router = () => {
     try {
       const categories_item: any = [];
       /*************
-       * 
-       * 
-       * 
-       * 
-       * 
+       *
+       *
+       *
+       *
+       *
        * ****** */
       const locals = {
         title: "View Customer Data",
@@ -165,32 +152,36 @@ const Router = () => {
   //** Create wallet */
   router.post("/wallet/add", async (req, res) => {
     /*************
-     * 
-     * 
-     * 
-     * 
-     * 
-     * ****** */});
+     *
+     *
+     *
+     *
+     *
+     * ****** */
+  });
 
   /** Update  wallet */
   router.post("/wallet/edit/:id", async (req, res) => {
-    /*************
-     * 
-     * 
-     * 
-     * 
-     * 
-     * ****** */});
+    let req1 = await walletService.updateWallet(req.body,req.params.id);
+      if (req1) {
+        req.flash("info", " wallet ben edit.");
+        res.redirect("/");
+      }else{
+        
+        req.flash("info", " err");
+        res.redirect("/");
+      }
+  });
 
   /** delete wallet */
   router.post("/wallet/drop/:id", async (req, res) => {
     try {
       /*************
-       * 
-       * 
-       * 
-       * 
-       * 
+       *
+       *
+       *
+       *
+       *
        * ****** */
     } catch (error) {
       console.log(error);
@@ -208,12 +199,13 @@ const Router = () => {
       }
     ) => {
       /*************
-       * 
-       * 
-       * 
-       * 
-       * 
-       * ****** */}
+       *
+       *
+       *
+       *
+       *
+       * ****** */
+    }
   );
 
   /** Update  categories */

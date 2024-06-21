@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import log from "./logger.service";
+import 'dotenv/config'
 
 async function connect() {
   const dbUri: string =

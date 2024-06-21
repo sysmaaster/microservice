@@ -20,8 +20,8 @@
       </nav>
     </div>
     <div class="col text-end fw-lighter">
-      <b>Last Updated <%= new Date(wallets_item.updatedAt).toUTCString() %> </b>
-      <b>walletId:</b> <%= wallets_item.id %>
+      <b>Last Updated <%= new Date(wallets_item.updatedAt).toLocaleString() %> </b>
+      <b>wallet_Id:</b> <%= wallets_item.id %>
     </div>
   </div>
 
@@ -81,14 +81,14 @@
   <li class="list-group-item"> 
     <div class="row">
       <div class="col" style="max-width: 140px"> <b>Date Created:</b></div>
-      <div class="col"><%= wallets_item.createdAt %></div>
+      <div class="col"><%= new Date(wallets_item.createdAt).toLocaleString() %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
       <div class="col" style="max-width: 140px"> <b>Date Modified:</b></div>
-      <div class="col"><%= wallets_item.updatedAt %></div>
+      <div class="col"><%= new Date(wallets_item.updatedAt).toLocaleString() %></div>
     </div>
   </li>
 

@@ -74,6 +74,8 @@ class WalletRepositry {
         CCY: upd.CCY,
         TYPE: upd.TYPE,
         HOVER: upd.HOVER,
+        updatedAt:Date.now()
+
       };
       const result = await DB.findOneAndUpdate({ id }, udp_data, {
         new: true,
