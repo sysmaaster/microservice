@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head'); %>
+  </head>
+  <body class="d-flex flex-column">
+    <div id="page-content">
+      <h4><%= text %></h4>
+      <div style="padding-left: 20px" id="app">
+        <span v-cloak>wallets</span><br />
+        <div v-cloak v-for="item in wallets">
+          <div style="padding-left: 10px">
+            {{ item.W_NAME }} -- {{ item.W_COMMENT }} -- {{ item.SUMMA }}
+          </div>
+        </div>
+        <br />
+        <span v-cloak>categories</span><br />
+        <div v-cloak v-for="item in categories">
+          <div style="padding-left: 10px">
+            {{ item.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('./partials/footer'); %>
+  </body>
+</html>

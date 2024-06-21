@@ -1,0 +1,61 @@
+<div class="btn-group me-2">
+  <button
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#newCat"
+    class="btn btn-sm btn-outline-secondary"
+  >
+    + New Categories
+  </button>
+</div>
+<div
+  class="modal fade"
+  id="newCat"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="newCatLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">New Categories</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/categories/add" method="POST">
+          <div class="row form-group mb-4">
+            <div class="col-6 col-sm-6">
+              <label for="name">name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Категорія Витрат"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Add Wallet</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

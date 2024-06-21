@@ -1,0 +1,10 @@
+/* Sticky Footer Classes */
+footer {
+  position: fixed;
+  height: 30px;
+  bottom: 0;
+  width: 100%;
+}
+[v-cloak] {
+  display: none;
+}

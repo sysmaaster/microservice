@@ -1,0 +1,7 @@
+<script type="module">
+  import { io } from "https://cdn.socket.io/4.7.5/socket.io.esm.min.js";
+  const socket = io();
+  socket.on("info", function (data) {
+    console.log(data);
+  });
+</script>
