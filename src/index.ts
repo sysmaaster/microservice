@@ -1,11 +1,11 @@
+import "dotenv/config";
 import app from "./app";
-import ui_app from "./ui_app";
+import frontend from "./frontend";
 import { createServer } from "http";
 import logger from "./services/logger.service";
 import connect from "./services/MongoDB_Connect.service";
 import { startMetricsServer } from "./services/metrics.service";
 import socketIO from "./utils/socket";
-import 'dotenv/config'
 
 function start_Api_Server() {
   const server = createServer(app);
@@ -17,11 +17,12 @@ function start_Api_Server() {
     //socketIO(server)
   });
 }
+
 function start_Front_Server() {
-  const server = createServer(ui_app);
+  const server = createServer(frontend);
   const port: string | number = process.env.FRONTEND_PORT || 8081;
   server.listen(port, async () => {
-    logger.info(`FrontEnd Serverstart at http://localhost:${port}`);
+    logger.info(`FrontEnd Server start at http://localhost:${port}`);
   });
 }
 
