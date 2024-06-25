@@ -1,10 +1,10 @@
 import { Response, NextFunction } from "express";
 import { HTTP_Status } from "../utils/HTTP_Status";
-import { WalletResponseModel } from "../models/walletResponse.model";
+import { WalletResponseModel } from "../models/wallet/walletResponse.model";
 import { RequestWithBody, RequestWithParams, RequestWithQuery } from "../types";
 import walletService from "../services/wallet.service";
 import log from "../services/logger.service";
-import { WalletEditRequestModel } from "../models/walletEditRequest.model";
+import { WalletEditRequestModel } from "../models/wallet/walletEditRequest.model";
 
 class WalletController {
   async getAllWallets(
@@ -25,13 +25,13 @@ class WalletController {
   }
 
   async getWalletFromId(
-    req: RequestWithParams<{ id: string}>,
+    req: RequestWithParams<{ id: string }>,
     res: Response<WalletResponseModel | {}>,
     next: NextFunction
   ) {
     try {
       let foundWallet;
-      
+
       if (!req.params.id) {
         res.sendStatus(HTTP_Status.BAD_REQUEST_400);
         return;
@@ -54,7 +54,7 @@ class WalletController {
     try {
       const Wallet = await walletService.createWallet(req.body);
       if (Wallet) {
-      res.status(HTTP_Status.CREATED_201).json(Wallet);
+        res.status(HTTP_Status.CREATED_201).json(Wallet);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
       log.error(e, "createWallet - WalletController");
@@ -63,7 +63,7 @@ class WalletController {
   }
 
   async updateWallet(
-    req: { body: WalletEditRequestModel; params: { id: string; }; },
+    req: { body: WalletEditRequestModel; params: { id: string } },
     res: Response<WalletResponseModel | {}>
   ) {
     try {
@@ -77,7 +77,10 @@ class WalletController {
     }
   }
 
-  async deleteWallet(req: RequestWithParams<{id:string}>, res: Response<{}>) {
+  async deleteWallet(
+    req: RequestWithParams<{ id: string }>,
+    res: Response<{}>
+  ) {
     try {
       let foundWallet;
       foundWallet = await walletService.deleteWallet(req.params.id);

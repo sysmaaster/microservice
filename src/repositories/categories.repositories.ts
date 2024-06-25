@@ -1,7 +1,7 @@
 import { databaseResponseTimeHistogram } from "../services/metrics.service";
 import db from "../schema/categories.schema";
-import { CategoriesCreateModel } from "../models/categoriesCreate.model";
-import { CategoriesEditRequestModel } from "../models/categoriesEditRequest.model";
+import { CategoriesCreateModel } from "../models/categories/categoriesCreate.model";
+import { CategoriesEditRequestModel } from "../models/categories/categoriesEditRequest.model";
 import log from "../services/logger.service";
 import ErrorException from "../exceptions/error.exception";
 import getCrypto from "../utils/crypto.gen";
@@ -67,7 +67,7 @@ class CategoriesRepositry {
     }
   }
 
-  async Update(upd: CategoriesEditRequestModel,id:string) {
+  async Update(upd: CategoriesEditRequestModel, id: string) {
     const metricsLabels = {
       operation: "Update categories",
     };

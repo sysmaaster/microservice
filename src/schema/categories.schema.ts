@@ -1,10 +1,28 @@
 import mongoose from "mongoose";
 
+const subCategorySchema = new mongoose.Schema({
+  id: { type: String, required: true, index: true, unique: true },
+  name: { type: String, required: true, unique: true },
+});
+mongoose.model("SubCategory", subCategorySchema);
+
 const CategoriesSchema = new mongoose.Schema(
   {
     id: { type: String, required: true, index: true, unique: true },
     name: { type: String, required: true, unique: true },
-    created: { type: String, default: Date.now },
+    SubCategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "SubCategory",
+    },
+    primary: { type: Boolean, required: true },
+    createdAt: {
+      type: Date,
+      default: Date.now().toLocaleString(),
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now().toLocaleString(),
+    },
   },
   {
     collection: "categories",

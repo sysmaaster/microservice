@@ -1,14 +1,10 @@
 import { HTTP_Status } from "../utils/HTTP_Status";
 import { Response, Request, NextFunction } from "express";
-import ErrorException from "../exceptions/error.exception";
 import { RequestWithBody, RequestWithParams } from "../types";
 import log from "../services/logger.service";
-import categoriesService from "../services/categories.service";
-import { CategoriesResponseModel } from "../models/categories/categoriesResponse.model";
-import { CategoriesCreateModel } from "../models/categories/categoriesCreate.model";
-import { CategoriesEditRequestModel } from "../models/categories/categoriesEditRequest.model";
+import PartCreditService from "../services/partcredit.service";
 
-class CategoriesController {
+class PartCreditController {
   async getAll(
     req: Request,
     res: Response<CategoriesResponseModel | {}>,
@@ -16,12 +12,12 @@ class CategoriesController {
   ) {
     try {
       let founds;
-      founds = await categoriesService.getAll();
+      founds = await PartCreditService.getAll();
       if (founds) {
         res.status(HTTP_Status.OK_200).json(founds);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "getAll - CategoriesController");
+      log.error(e, "getAll - PartCreditController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
@@ -42,7 +38,7 @@ class CategoriesController {
         res.status(HTTP_Status.OK_200).json(found);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "getFromId - CategoriesController");
+      log.error(e, "getFromId - PartCreditController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
@@ -59,7 +55,7 @@ class CategoriesController {
         res.sendStatus(HTTP_Status.BAD_REQUEST_400);
       }
     } catch (e) {
-      log.error(e, "create - CategoriesController");
+      log.error(e, "create - PartCreditController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
@@ -75,7 +71,7 @@ class CategoriesController {
         res.status(HTTP_Status.CREATED_201).json(upd);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "update - CategoriesController");
+      log.error(e, "update - PartCreditController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
@@ -92,10 +88,10 @@ class CategoriesController {
         res.sendStatus(HTTP_Status.OK_200);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "delet - CategoriesController");
+      log.error(e, "delet - PartCreditController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
 }
 
-export default new CategoriesController();
+export default new PartCreditController();

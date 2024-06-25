@@ -2,7 +2,7 @@ import { CategoriesCreateModel } from "../models/categories/categoriesCreate.mod
 import { CategoriesEditRequestModel } from "../models/categories/categoriesEditRequest.model";
 import { CategoriesResponseModel } from "../models/categories/categoriesResponse.model";
 import repo from "../repositories/categories.repositories";
-class CategoriesService {
+class PartCreditService {
   async getAll(): Promise<CategoriesResponseModel | {} | false> {
     let result;
     result = await repo.getAll();
@@ -45,4 +45,4 @@ class CategoriesService {
   }
 }
 
-export default new CategoriesService();
+export default new PartCreditService();

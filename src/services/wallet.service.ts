@@ -1,6 +1,6 @@
-import { WalletCreateModel } from "../models/walletCreate.model";
-import { WalletEditRequestModel } from "../models/walletEditRequest.model";
-import { WalletResponseModel } from "../models/walletResponse.model";
+import { WalletCreateModel } from "../models/wallet/walletCreate.model";
+import { WalletEditRequestModel } from "../models/wallet/walletEditRequest.model";
+import { WalletResponseModel } from "../models/wallet/walletResponse.model";
 import Wallet from "../repositories/wallet.repositories";
 
 class WalletService {
@@ -30,10 +30,10 @@ class WalletService {
 
   async updateWallet(
     updWallet: WalletEditRequestModel,
-    id:string
+    id: string
   ): Promise<WalletResponseModel | {} | false> {
     let result;
-    result = await Wallet.Update(updWallet,id);
+    result = await Wallet.Update(updWallet, id);
     if (result) return result;
     return false;
   }

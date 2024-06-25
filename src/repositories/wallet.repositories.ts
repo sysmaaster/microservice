@@ -1,7 +1,7 @@
 import DB from "../schema/wallet.schema";
-import { WalletCreateModel } from "../models/walletCreate.model";
+import { WalletCreateModel } from "../models/wallet/walletCreate.model";
 import { databaseResponseTimeHistogram } from "../services/metrics.service";
-import { WalletEditRequestModel } from "../models/walletEditRequest.model";
+import { WalletEditRequestModel } from "../models/wallet/walletEditRequest.model";
 import getCrypto from "../utils/crypto.gen";
 
 class WalletRepositry {
@@ -60,7 +60,7 @@ class WalletRepositry {
     }
   }
 
-  async Update(upd: WalletEditRequestModel,id:string) {
+  async Update(upd: WalletEditRequestModel, id: string) {
     const metricsLabels = {
       operation: "Update",
     };
@@ -74,8 +74,7 @@ class WalletRepositry {
         CCY: upd.CCY,
         TYPE: upd.TYPE,
         HOVER: upd.HOVER,
-        updatedAt:Date.now()
-
+        updatedAt: Date.now().toLocaleString(),
       };
       const result = await DB.findOneAndUpdate({ id }, udp_data, {
         new: true,
