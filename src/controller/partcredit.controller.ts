@@ -7,7 +7,7 @@ import PartCreditService from "../services/partcredit.service";
 class PartCreditController {
   async getAll(
     req: Request,
-    res: Response<CategoriesResponseModel | {}>,
+    res: Response<any | {}>,
     next: NextFunction
   ) {
     try {
@@ -24,7 +24,7 @@ class PartCreditController {
 
   async getFromId(
     req: RequestWithParams<{ id: string }>,
-    res: Response<CategoriesResponseModel | {}>,
+    res: Response<any | {}>,
     next: NextFunction
   ) {
     try {
@@ -43,8 +43,8 @@ class PartCreditController {
     }
   }
   async create(
-    req: RequestWithBody<CategoriesCreateModel>,
-    res: Response<CategoriesResponseModel | {}>,
+    req: RequestWithBody<any>,
+    res: Response<any | {}>,
     next: NextFunction
   ) {
     try {
@@ -60,8 +60,8 @@ class PartCreditController {
     }
   }
   async update(
-    req: { body: CategoriesEditRequestModel; params: { id: string } },
-    res: Response<CategoriesResponseModel | {}>,
+    req: { body: any; params: { id: string } },
+    res: Response<any | {}>,
     next: NextFunction
   ) {
     try {

@@ -19,7 +19,7 @@ const transport = pino.transport({
 const log = pino(
   {
     base: {},
-    level: process.env.LOG_LEVEL || "info", //
+    level: process.env.PINO_LOG_LEVEL || "info", //
     timestamp: () => `,"time":"${dayjs().format()}"`, //2024-04-18T16:10:18+03:00
     redact: {
       paths: ["user.name", "user.address", "user.passport", "user.phone"],

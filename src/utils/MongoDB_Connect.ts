@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-import log from "./logger.service";
-import 'dotenv/config'
+import "dotenv/config";
+import log from "../services/logger.service";
 
 async function connect() {
-  const dbUri: string =
-    process.env.CONNECT_URL ||
-    "mongodb://root:example@localhost:27017/monefly?authMechanism=DEFAULT&authSource=admin";
+  const dbUri: string = process.env.CONNECT_URL || "";
 
   try {
     const run = async () => {
