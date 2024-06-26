@@ -1,7 +1,7 @@
 import express from "express";
 import WalletController from "../controller/wallet.controller";
 import { InputValidationMiddleware } from "../middleware/inputValidation.middleware";
-import { InputBodyWalletValidation } from "../validations/InputBodyWallet.validator";
+import { InputBodyWalletValidation } from "../validations/wallet/InputBodyWallet.validator";
 
 const WalletRouter = () => {
   const router = express.Router();

@@ -3,7 +3,7 @@ import app from "./app";
 import frontend from "./frontend";
 import { createServer } from "http";
 import logger from "./services/logger.service";
-import connect from "./services/MongoDB_Connect.service";
+import connect from "./utils//MongoDB_Connect";
 import { startMetricsServer } from "./services/metrics.service";
 import socketIO from "./utils/socket";
 

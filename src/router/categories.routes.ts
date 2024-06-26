@@ -1,8 +1,8 @@
 import express from "express";
 import CategoryController from "../controller/category.controller";
 import { InputValidationMiddleware } from "../middleware/inputValidation.middleware";
-import { InputBodyNewCategoryValidation } from "../validations/InputBodyNewCategory.validator";
-import { InputBodyEditCategoryValidation } from "../validations/InputBodyEditCategory.validator";
+import { InputBodyNewCategoryValidation } from "../validations/category/InputBodyNewCategory.validator";
+import { InputBodyEditCategoryValidation } from "../validations/category/InputBodyEditCategory.validator";
 
 const CategoriesRouter = () => {
   const router = express.Router();

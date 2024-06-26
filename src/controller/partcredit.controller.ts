@@ -33,7 +33,7 @@ class PartCreditController {
         res.sendStatus(HTTP_Status.BAD_REQUEST_400);
         return;
       }
-      found = await categoriesService.getById(req.params.id);
+      found = await PartCreditService.getById(req.params.id);
       if (found) {
         res.status(HTTP_Status.OK_200).json(found);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
@@ -48,7 +48,7 @@ class PartCreditController {
     next: NextFunction
   ) {
     try {
-      const Wallet = await categoriesService.create(req.body);
+      const Wallet = await PartCreditService.create(req.body);
       if (Wallet) {
         res.status(HTTP_Status.CREATED_201).json(Wallet);
       } else {
@@ -66,7 +66,7 @@ class PartCreditController {
   ) {
     try {
       const id = req.params.id;
-      const upd = await categoriesService.update(req.body, id);
+      const upd = await PartCreditService.update(req.body, id);
       if (upd) {
         res.status(HTTP_Status.CREATED_201).json(upd);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
@@ -83,7 +83,7 @@ class PartCreditController {
   ) {
     try {
       let foundcatg;
-      foundcatg = await categoriesService.delete(req.params.id);
+      foundcatg = await PartCreditService.delete(req.params.id);
       if (foundcatg) {
         res.sendStatus(HTTP_Status.OK_200);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
