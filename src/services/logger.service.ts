@@ -20,7 +20,7 @@ const log = pino(
   {
     base: {},
     level: process.env.PINO_LOG_LEVEL || "info", //
-    timestamp: () => `,"time":"${dayjs().format()}"`, //2024-04-18T16:10:18+03:00
+    timestamp: () => `,"time":"${dayjs().format("HH:mm:ss DD/MM/YYYY")}"`,
     redact: {
       paths: ["user.name", "user.address", "user.passport", "user.phone"],
       censor: "[ТАЙНА]",
