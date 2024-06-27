@@ -14,7 +14,7 @@ const updVersion = () => {
     if (err) logger.error(err);
     var parse = JSON.parse(data);
     parse.version++;
-    logger.info(`version: ${parse.comit}.${parse.version}`);
+    logger.info(`version: ${parse.commit}.${parse.version}`);
 
     fs.writeFileSync(file, JSON.stringify(parse)),
       (err: any) => {
