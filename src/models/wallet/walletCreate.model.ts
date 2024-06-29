@@ -1,4 +1,13 @@
-import { ObjectId } from "mongodb";
+export type WalletCreateModel = {
+  W_NAME: string;
+  W_COMMENT: string;
+  SUMMA: number;
+  LIMIT: number;
+  CCY: string;
+  TYPE: string;
+  HOVER: boolean;
+};
+
 /**
  * @openapi
  * components:
@@ -50,13 +59,3 @@ import { ObjectId } from "mongodb";
  *          type: boolean
  *          example: false
  */
-
-export type WalletCreateModel = {
-  W_NAME: string;
-  W_COMMENT: string;
-  SUMMA: number;
-  LIMIT: number;
-  CCY: string;
-  TYPE: string;
-  HOVER: boolean;
-};

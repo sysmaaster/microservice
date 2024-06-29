@@ -1,3 +1,8 @@
+export type CategoriesResponseModel = {
+  id: string;
+  name: string;
+};
+
 /**
  * @openapi
  * components:
@@ -18,8 +23,3 @@
  *          maxLength: 30
  *
  */
-
-export type CategoriesResponseModel = {
-  id: string;
-  name: string;
-};

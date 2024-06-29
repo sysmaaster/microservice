@@ -1,3 +1,7 @@
+export type CategoriesCreateModel = {
+  name: string;
+  // HOVER: boolean;
+};
 
 /**
  * @openapi
@@ -15,8 +19,3 @@
  *          maxLength: 30
  *
  */
-
-export type CategoriesCreateModel = {
-  name: string;
-  // HOVER: boolean;
-};

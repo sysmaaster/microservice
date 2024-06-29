@@ -1,3 +1,14 @@
+export type WalletResponseModel = {
+  id: string;
+  W_NAME: string;
+  W_COMMENT: string;
+  SUMMA: number;
+  LIMIT: number;
+  CCY: string;
+  TYPE: string;
+  HOVER: boolean;
+};
+
 /**
  * @openapi
  * components:
@@ -53,14 +64,3 @@
  *          type: boolean
  *          example: false
  */
-
-export type WalletResponseModel = {
-  id: string;
-  W_NAME: string;
-  W_COMMENT: string;
-  SUMMA: number;
-  LIMIT: number;
-  CCY: string;
-  TYPE: string;
-  HOVER: boolean;
-};

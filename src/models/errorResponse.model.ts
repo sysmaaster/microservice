@@ -1,3 +1,9 @@
+export type ErrorResponseModel = {
+  success: boolean;
+  status: number;
+  data: {};
+};
+
 /**
  * @openapi
  *components:
@@ -23,8 +29,3 @@
  *              type: string
  *              example: something is wrong
  */
-export type ErrorResponseModel = {
-  success: boolean;
-  status: number;
-  data: {};
-};

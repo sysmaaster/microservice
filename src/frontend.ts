@@ -41,7 +41,7 @@ frontend.use(bodyParser.json()); // parse form data client
 // Flash Messages
 frontend.use(flash()); //{ sessionKeyName: 'flashMessage' }
 
-// Templating Engine
+// Template Engine
 frontend.use(expressLayout);
 frontend.set("layout", "./layouts/main");
 frontend.set("view engine", "ejs"); // configure template engine
