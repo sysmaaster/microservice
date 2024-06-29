@@ -13,6 +13,7 @@ import invalidPathHandler from "./handler/invalidPath.handler";
 import session from "express-session";
 import "dotenv/config";
 import ContractRouter from "./router/contract.routes";
+import AuthRouter from "./router/auth.routes";
 
 const app = express();
 
@@ -52,7 +53,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+      maxAge: 1000 * 60 * 60 * 24, //* 7,  1 week
     },
   })
 );
@@ -63,6 +64,7 @@ app.set("views", path.resolve(path.resolve(), "views")); // set express to look 
 /** Routes  */
 app.get("/healthcheck", (req, res) => res.sendStatus(200));
 
+app.use(AuthRouter());
 //-- Auth
 //app.use(BasicAuthMiddleware);
 
