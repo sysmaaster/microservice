@@ -1,4 +1,4 @@
-export type ContractEditRequestModel = {
+export type ContractResponseModel = {
   id: string;
   c_name: string;
   c_owner: string;

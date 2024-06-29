@@ -1,16 +1,16 @@
-import { CategoriesCreateModel } from "../models/categories/categoriesCreate.model";
-import { CategoriesEditRequestModel } from "../models/categories/categoriesEditRequest.model";
-import { CategoriesResponseModel } from "../models/categories/categoriesResponse.model";
-import repo from "../repositories/categories.repositories";
+import { ContractCreateModel } from "../models/partCredit/contractCreate.model";
+import { ContractEditRequestModel } from "../models/partCredit/contractEditRequest.model";
+import { ContractResponseModel } from "../models/partCredit/contractResponse.model";
+import repo from "../repositories/contract.repositories";
 class PartCreditService {
-  async getAll(): Promise<CategoriesResponseModel | {} | false> {
+  async getAll(): Promise<ContractResponseModel | {} | false> {
     let result;
     result = await repo.getAll();
     if (result) return result;
     return false;
   }
 
-  async getById(id: string): Promise<CategoriesResponseModel | {} | false> {
+  async getById(id: string): Promise<ContractResponseModel | {} | false> {
     let result;
     result = await repo.getById(id);
     if (result) return result;
@@ -18,20 +18,20 @@ class PartCreditService {
   }
 
   async create(
-    newCatg: CategoriesCreateModel
-  ): Promise<CategoriesResponseModel | {} | false> {
+    newContract: ContractCreateModel
+  ): Promise<ContractResponseModel | {} | false> {
     let result;
-    result = await repo.Create(newCatg);
+    result = await repo.create(newContract);
     if (result) return result;
     return false;
   }
 
   async update(
-    updCatg: CategoriesEditRequestModel,
+    updContract: ContractEditRequestModel,
     id: string
-  ): Promise<CategoriesResponseModel | {} | false> {
+  ): Promise<ContractResponseModel | {} | false> {
     let result;
-    result = await repo.Update(updCatg, id);
+    result = await repo.update(updContract, id);
     if (result) return result;
     return false;
   }
@@ -39,7 +39,7 @@ class PartCreditService {
   async delete(id: string): Promise<boolean> {
     if (!id) return false;
     let result;
-    result = await repo.Delete(id);
+    result = await repo.delete(id);
     if (result) return true;
     return false;
   }
