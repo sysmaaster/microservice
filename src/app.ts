@@ -12,7 +12,7 @@ import { restResponseTimeHistogram } from "./services/metrics.service";
 import invalidPathHandler from "./handler/invalidPath.handler";
 import session from "express-session";
 import "dotenv/config";
-import PartCreditRouter from "./router/partCredit.routes";
+import ContractRouter from "./router/contract.routes";
 
 const app = express();
 
@@ -71,7 +71,7 @@ swaggerDocs(app, process.env.SERVER_PORT || "");
 // Routes
 app.use("/wallet", WalletRouter());
 app.use("/categories", CategoriesRouter());
-app.use("/part", PartCreditRouter());
+app.use("/part", ContractRouter());
 
 app.use(errorLoggerHandler); //-- ErrorException
 app.use(errorMiddleware); //-- ErrorException

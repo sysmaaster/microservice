@@ -1,8 +1,8 @@
 import express from "express";
-import PartCreditController from "../controller/partcredit.controller";
+import ContractController from "../controller/contract.controller";
 import { InputValidationMiddleware } from "../middleware/inputValidation.middleware";
 
-const PartCreditRouter = () => {
+const ContractRouter = () => {
   const router = express.Router();
 
   /**
@@ -40,7 +40,7 @@ const PartCreditRouter = () => {
    *                $ref: '#/components/schemas/ErrorResponseModel'
    *
    */
-  router.get("/:id", PartCreditController.getFromId);
+  router.get("/:id", ContractController.getFromId);
 
   /**getAllPartCredit
    * @openapi
@@ -69,7 +69,7 @@ const PartCreditRouter = () => {
    *                $ref: '#/components/schemas/ErrorResponseModel'
    *
    */
-  router.get("/", PartCreditController.getAll);
+  router.get("/", ContractController.getAll);
 
   /**newPartCredit
    * @openapi
@@ -108,7 +108,7 @@ const PartCreditRouter = () => {
     "/",
     //InputBodyNewCategoryValidation,*************rechange
     InputValidationMiddleware,
-    PartCreditController.create
+    ContractController.create
   );
 
   /**editCategory
@@ -148,7 +148,7 @@ const PartCreditRouter = () => {
     "/",
     //InputBodyEditCategoryValidation,,*************rechange
     InputValidationMiddleware,
-    PartCreditController.update
+    ContractController.update
   );
 
   /**deleteCategory
@@ -184,9 +184,9 @@ const PartCreditRouter = () => {
    *          example: 53b1c579bdf3de74f76bdac9
    *
    */
-  router.delete(/^\/(?:([^\/]+?))\/?$/i, PartCreditController.delet);
+  router.delete(/^\/(?:([^\/]+?))\/?$/i, ContractController.delet);
 
   return router;
 };
 
-export default PartCreditRouter;
+export default ContractRouter;

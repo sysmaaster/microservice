@@ -2,7 +2,7 @@ import { ContractCreateModel } from "../models/partCredit/contractCreate.model";
 import { ContractEditRequestModel } from "../models/partCredit/contractEditRequest.model";
 import { ContractResponseModel } from "../models/partCredit/contractResponse.model";
 import repo from "../repositories/contract.repositories";
-class PartCreditService {
+class ContractService {
   async getAll(): Promise<ContractResponseModel | {} | false> {
     let result;
     result = await repo.getAll();
@@ -45,4 +45,4 @@ class PartCreditService {
   }
 }
 
-export default new PartCreditService();
+export default new ContractService();

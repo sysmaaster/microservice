@@ -2,22 +2,18 @@ import { HTTP_Status } from "../utils/HTTP_Status";
 import { Response, Request, NextFunction } from "express";
 import { RequestWithBody, RequestWithParams } from "../types";
 import log from "../services/logger.service";
-import PartCreditService from "../services/partcredit.service";
+import ContractService from "../services/contract.service";
 
-class PartCreditController {
-  async getAll(
-    req: Request,
-    res: Response<any | {}>,
-    next: NextFunction
-  ) {
+class ContractController {
+  async getAll(req: Request, res: Response<any | {}>, next: NextFunction) {
     try {
       let founds;
-      founds = await PartCreditService.getAll();
+      founds = await ContractService.getAll();
       if (founds) {
         res.status(HTTP_Status.OK_200).json(founds);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "getAll - PartCreditController");
+      log.error(e, "getAll - ContractController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
@@ -33,12 +29,12 @@ class PartCreditController {
         res.sendStatus(HTTP_Status.BAD_REQUEST_400);
         return;
       }
-      found = await PartCreditService.getById(req.params.id);
+      found = await ContractService.getById(req.params.id);
       if (found) {
         res.status(HTTP_Status.OK_200).json(found);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "getFromId - PartCreditController");
+      log.error(e, "getFromId - ContractController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
@@ -48,14 +44,14 @@ class PartCreditController {
     next: NextFunction
   ) {
     try {
-      const Wallet = await PartCreditService.create(req.body);
+      const Wallet = await ContractService.create(req.body);
       if (Wallet) {
         res.status(HTTP_Status.CREATED_201).json(Wallet);
       } else {
         res.sendStatus(HTTP_Status.BAD_REQUEST_400);
       }
     } catch (e) {
-      log.error(e, "create - PartCreditController");
+      log.error(e, "create - ContractController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
@@ -66,12 +62,12 @@ class PartCreditController {
   ) {
     try {
       const id = req.params.id;
-      const upd = await PartCreditService.update(req.body, id);
+      const upd = await ContractService.update(req.body, id);
       if (upd) {
         res.status(HTTP_Status.CREATED_201).json(upd);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "update - PartCreditController");
+      log.error(e, "update - ContractController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
@@ -83,15 +79,15 @@ class PartCreditController {
   ) {
     try {
       let foundcatg;
-      foundcatg = await PartCreditService.delete(req.params.id);
+      foundcatg = await ContractService.delete(req.params.id);
       if (foundcatg) {
         res.sendStatus(HTTP_Status.OK_200);
       } else res.sendStatus(HTTP_Status.BAD_REQUEST_400);
     } catch (e) {
-      log.error(e, "delet - PartCreditController");
+      log.error(e, "delet - ContractController");
       res.sendStatus(HTTP_Status.Server_Error_500);
     }
   }
 }
 
-export default new PartCreditController();
+export default new ContractController();
