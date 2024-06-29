@@ -1,6 +1,6 @@
-import { ContractCreateModel } from "../models/partCredit/contractCreate.model";
-import { ContractEditRequestModel } from "../models/partCredit/contractEditRequest.model";
-import { ContractResponseModel } from "../models/partCredit/contractResponse.model";
+import { ContractCreateModel } from "../models/contractPart/contractCreate.model";
+import { ContractEditRequestModel } from "../models/contractPart/contractEditRequest.model";
+import { ContractResponseModel } from "../models/contractPart/contractResponse.model";
 import repo from "../repositories/contract.repositories";
 class ContractService {
   async getAll(): Promise<ContractResponseModel | {} | false> {

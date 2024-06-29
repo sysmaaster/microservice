@@ -13,7 +13,7 @@ const ContractRouter = () => {
    *        - basicAuth: []
    *      summary: Метод Отримання Рахунку
    *      tags:
-   *        - PartCredit
+   *        - ContractPart
    *      operationId: getCreditFromId
    *      parameters:
    *        - name: id
@@ -42,7 +42,7 @@ const ContractRouter = () => {
    */
   router.get("/:id", ContractController.getFromId);
 
-  /**getAllPartCredit
+  /**getAllContractPart
    * @openapi
    *  '/part':
    *   get:
@@ -50,8 +50,8 @@ const ContractRouter = () => {
    *        - basicAuth: []
    *      summary: Метод Отримання списку Категорій
    *      tags:
-   *        - PartCredit
-   *      operationId: getAllPartCredit
+   *        - ContractPart
+   *      operationId: getAllContractPart
    *      responses:
    *        "200":
    *          description: Успіх
@@ -71,7 +71,7 @@ const ContractRouter = () => {
    */
   router.get("/", ContractController.getAll);
 
-  /**newPartCredit
+  /**newContractPart
    * @openapi
    *  /part:
    *    post:
@@ -79,8 +79,8 @@ const ContractRouter = () => {
    *        - basicAuth: []
    *      summary: Метод додавання категорії
    *      tags:
-   *        - PartCredit
-   *      operationId: newPartCredit
+   *        - ContractPart
+   *      operationId: newContractPart
    *      requestBody:
    *        required: true
    *        content:
@@ -111,7 +111,7 @@ const ContractRouter = () => {
     ContractController.create
   );
 
-  /**editCategory
+  /**editContract
    * @openapi
    *  /part:
    *    put:
@@ -119,8 +119,8 @@ const ContractRouter = () => {
    *        - basicAuth: []
    *      summary: Метод редагування
    *      tags:
-   *        - PartCredit
-   *      operationId: editPartCredit
+   *        - ContractPart
+   *      operationId: editContractPart
    *      requestBody:
    *        required: true
    *        content:
@@ -151,7 +151,7 @@ const ContractRouter = () => {
     ContractController.update
   );
 
-  /**deleteCategory
+  /**deleteContract
    * @openapi
    *   /part/{id}:
    *    delete:
@@ -159,8 +159,8 @@ const ContractRouter = () => {
    *        - basicAuth: []
    *      summary: Метод видалення Категорії
    *      tags:
-   *        - PartCredit
-   *      operationId: deletePartCredit
+   *        - ContractPart
+   *      operationId: deleteContractPart
    *      responses:
    *        "200":
    *          description: Успішно видалено

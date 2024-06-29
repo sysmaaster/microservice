@@ -1,6 +1,6 @@
 import { databaseResponseTimeHistogram } from "../services/metrics.service";
-import { ContractCreateModel } from "../models/partCredit/contractCreate.model";
-import { ContractEditRequestModel } from "../models/partCredit/contractEditRequest.model";
+import { ContractCreateModel } from "../models/contractPart/contractCreate.model";
+import { ContractEditRequestModel } from "../models/contractPart/contractEditRequest.model";
 import DB from "../schema/contract.schema";
 
 class ContractRepositry {
