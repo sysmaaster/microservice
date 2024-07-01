@@ -3,9 +3,13 @@ import "dotenv/config";
 import log from "../services/logger.service";
 
 async function connect() {
-  const dbUri: string = process.env.CONNECT_URL || "";
-
   try {
+    if (!process.env.MONGODB_URL) {
+      throw new Error(
+        "MONGODB_URL is not defined in the environment variables."
+      );
+    }
+    const dbUri: string = process.env.MONGODB_URL;
     const run = async () => {
       log.warn("Calling DB...");
       await mongoose.connect(dbUri);
