@@ -2,21 +2,24 @@ import path from "path";
 import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
+import session from "express-session";
 import responseTime from "response-time";
-import swaggerDocs from "./services/swagger.service";
+import userRouter from "./router/user.routes";
+import logger from "./services/logger.service";
 import WalletRouter from "./router/wallet.routes";
+import swaggerDocs from "./services/swagger.service";
+import ContractRouter from "./router/contract.routes";
 import CategoriesRouter from "./router/categories.routes";
 import errorMiddleware from "./middleware/error.middleware";
 import errorLoggerHandler from "./handler/errorLogger.handler";
-import { restResponseTimeHistogram } from "./services/metrics.service";
 import invalidPathHandler from "./handler/invalidPath.handler";
-import session from "express-session";
+import { restResponseTimeHistogram } from "./services/metrics.service";
 import "dotenv/config";
-import ContractRouter from "./router/contract.routes";
-import AuthRouter from "./router/auth.routes";
+import auth from "./middleware/auth.middleware";
 
 const app = express();
 
+//responseTime;
 app.use(
   responseTime(
     (request: express.Request, response: express.Response, time: number) => {
@@ -34,6 +37,7 @@ app.use(
   )
 );
 
+// Cors
 app.use(
   cors({
     origin: "*",
@@ -43,8 +47,9 @@ app.use(
   })
 );
 
+// Parse form data client
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); // parse form data client
+app.use(bodyParser.json());
 
 // Express Session
 app.use(
@@ -58,22 +63,27 @@ app.use(
   })
 );
 
+// Express Session
+//app.use()
+
 app.set("view engine", "ejs"); // configure template engine
 app.set("views", path.resolve(path.resolve(), "views")); // set express to look in this folder to render our view
 
 /** Routes  */
-app.get("/healthcheck", (req, res) => res.sendStatus(200));
+app.get("/api/healthcheck", (req, res) => res.sendStatus(200));
 
-app.use(AuthRouter());
 //-- Auth
-//app.use(BasicAuthMiddleware);
-
-swaggerDocs(app, process.env.SERVER_PORT || "");
+if (!process.env.SERVER_PORT) {
+  logger.fatal(`SERVER_PORT is not defined in the environment variables.`);
+} else {
+  swaggerDocs(app, process.env.SERVER_PORT);
+}
 
 // Routes
-app.use("/wallet", WalletRouter());
-app.use("/categories", CategoriesRouter());
-app.use("/part", ContractRouter());
+app.use("/api/users", userRouter);
+app.use("/api/wallet", auth, WalletRouter);
+app.use("/api/categories", auth, CategoriesRouter);
+app.use("/api/part", auth, ContractRouter);
 
 app.use(errorLoggerHandler); //-- ErrorException
 app.use(errorMiddleware); //-- ErrorException

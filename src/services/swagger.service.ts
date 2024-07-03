@@ -18,6 +18,11 @@ const options: swaggerJsdoc.Options = {
           type: "http",
           scheme: "basic",
         },
+        ApiKeyAuth: {
+          type: "apiKey",
+          in: "header",
+          name: "X-API-Key",
+        },
       },
     },
     security: [],

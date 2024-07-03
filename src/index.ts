@@ -26,23 +26,27 @@ const updVersion = () => {
 updVersion();
 
 function start_Api_Server() {
+  const port = process.env.SERVER_PORT;
   const server = createServer(app);
-  const port: string | number = process.env.SERVER_PORT || 1242;
   server.listen(port, async () => {
     logger.info(`Api Server listening at http://localhost:${port}`);
     startMetricsServer();
-    //await connect();
+    await connect();
     //socketIO(server)
   });
 }
 
 function start_Front_Server() {
   const server = createServer(frontend);
-  const port: string | number = process.env.FRONTEND_PORT || 8081;
+  const port = process.env.FRONTEND_PORT;
   server.listen(port, async () => {
     logger.info(`FrontEnd Server start at http://localhost:${port}`);
   });
 }
 
-start_Api_Server();
-start_Front_Server();
+if (!process.env.SERVER_PORT) {
+  logger.fatal(`SERVER_PORT is not defined in the environment variables.`);
+} else {
+  start_Api_Server();
+  start_Front_Server();
+}
