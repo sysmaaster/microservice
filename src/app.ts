@@ -16,6 +16,7 @@ import invalidPathHandler from "./handler/invalidPath.handler";
 import { restResponseTimeHistogram } from "./services/metrics.service";
 import "dotenv/config";
 import auth from "./middleware/auth.middleware";
+import logRequest from "./middleware/logerReq.middleware";
 
 const app = express();
 
@@ -50,6 +51,9 @@ app.use(
 // Parse form data client
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// logger  Request form client
+app.use(logRequest);
 
 // Express Session
 app.use(

@@ -7,6 +7,7 @@ import expressLayout from "express-ejs-layouts";
 import session from "express-session";
 import path from "path";
 import Router from "./router/frontend.routes";
+import logRequest from "./middleware/logerReq.middleware";
 
 const frontend = express();
 
@@ -47,6 +48,7 @@ frontend.set("layout", "./layouts/main");
 frontend.set("view engine", "ejs"); // configure template engine
 frontend.set("views", path.resolve(path.resolve(), "views")); // set express to look in this folder to render our view
 
+frontend.use(logRequest);
 // Routes
 frontend.use(Router());
 
